@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Nos Voitures</title>
+  <style>
+
+    /* ---- COULEURS DU SITE ---- */
+    :root {
+      --rouge:  #5E1E2B;
+      --beige:  #D2BCA8;
+      --gris:   #DADCDD;
+      --noir:   #202020;
+    }
+
+    /* ---- STYLE GENERAL ---- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial; background: var(--gris); }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      background: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--noir);
+    }
+    nav a:hover { color: var(--rouge); }
+    .btn {
+      padding: 8px 16px;
+      background: var(--rouge);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* ---- TITRE ---- */
+    .titre {
+      text-align: center;
+      padding: 30px;
+    }
+    .titre h1 span { color: var(--rouge); }
+
+    /* ---- GRILLE DES VOITURES ---- */
+    .grille {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* ---- CARTE D'UNE VOITURE ---- */
+    .carte {
+      background: white;
+      border-radius: 10px;
+      width: 250px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    .carte:hover { transform: scale(1.03); transition: 0.2s; }
+    .carte img { width: 100%; height: 160px; object-fit: cover; }
+    .carte .info { padding: 15px; }
+    .carte h3 { margin-bottom: 5px; }
+    .carte .prix { color: var(--rouge); font-weight: bold; }
+    .carte button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 9px;
+      background: var(--rouge);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* ---- FENETRE DETAILS (MODAL) ---- */
+    .modal {
+      display: none;               /* cachée par défaut */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); /* fond sombre */
+      justify-content: center;
+      align-items: center;
+    }
+    .modal.active { display: flex; } /* visible quand active */
+
+    .modal-contenu {
+      background: white;
+      border-radius: 12px;
+      width: 480px;
+      overflow: hidden;
+    }
+    .modal-contenu img { width: 100%; height: 200px; object-fit: cover; }
+    .modal-contenu .details { padding: 20px; }
+    .modal-contenu h2 { color: var(--rouge); margin-bottom: 15px; }
+
+    /* grille des infos dans la modal */
+    .infos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .info-item {
+      background: var(--gris);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .info-item small { color: gray; font-size: 0.75rem; }
+    .info-item p { font-weight: bold; }
+
+    .boutons { display: flex; gap: 10px; }
+    .boutons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-reserver { background: var(--rouge); color: white; }
+    .btn-fermer   { background: var(--gris);  color: var(--noir); }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--noir);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .galerie {
+  position: relative;
+}
+.galerie img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.nav-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+.nav-img.gauche { left: 8px; }
+.nav-img.droite { right: 8px; }
+
+.thumbnails {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  overflow-x: auto;
+}
+.thumbnails img {
+  width: 70px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.thumbnails img.active {
+  border-color: var(--rouge);
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav>
+  <strong style="color: var(--rouge); font-size: 1.3rem;">🚗 AutoRent</strong>
+  <div>
+    <a href="index.html">Accueil</a>
+    <a href="voitures.html">Voitures</a>
+    <a href="reservation.html">Réserver</a>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div>
+    <button class="btn" style="background:white; color:var(--rouge); border:2px solid var(--rouge); margin-right:5px;">S'inscrire</button>
+    <button class="btn">Connexion</button>
+  </div>
+</nav>
+
+<!-- ====== TITRE ====== -->
+<div class="titre">
+  <h1>Nos <span>Voitures Disponibles</span></h1>
+  <p style="color:gray; margin-top:8px;">Cliquez sur une voiture pour voir ses détails</p>
+</div>
+
+<!-- ====== GRILLE DES VOITURES ====== -->
+<!-- Les cartes seront ajoutées ici par JavaScript -->
+<div class="grille" id="grille"></div>
+
+<!-- ====== FENETRE DETAILS (MODAL) ====== -->
+<div class="modal" id="modal">
+  <div class="modal-contenu">
+
+    <!-- Galerie avec navigation -->
+    <div class="galerie">
+      <img id="m-image" src="" alt="">
+      <button class="nav-img gauche" onclick="changerImage(-1)">‹</button>
+      <button class="nav-img droite" onclick="changerImage(1)">›</button>
+    </div>
+
+    <!-- Miniatures -->
+    <div class="thumbnails" id="thumbnails"></div>
+
+    <div class="details">
+      <h2 id="m-nom"></h2>
+      <div class="infos">
+        <div class="info-item"><small>💰 Prix</small><p id="m-prix"></p></div>
+        <div class="info-item"><small>📅 Année</small><p id="m-annee"></p></div>
+        <div class="info-item"><small>⚙️ Boîte</small><p id="m-boite"></p></div>
+        <div class="info-item"><small>⛽ Carburant</small><p id="m-carburant"></p></div>
+        <div class="info-item"><small>🚪 Places</small><p id="m-places"></p></div>
+        <div class="info-item"><small>🏎️ Puissance</small><p id="m-puissance"></p></div>
+      </div>
+      <div class="boutons">
+        <button class="btn-reserver" onclick="reserver()">📅 Réserver</button>
+        <button class="btn-fermer" onclick="fermer()">✖ Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <p>© 2024 AutoRent — Tous droits réservés</p>
+</footer>
+
+
+<!-- ====== JAVASCRIPT ====== -->
+<script>
+
+  // ---- LISTE DES VOITURES ----
+  // Chaque voiture est un objet avec ses informations
+  var voitures = [
+    {
+      nom:       "Mercedes Benz 2024",
+      prix:      "900 DH/mois",
+      annee:     "2024",
+      boite:     "Automatique",
+      carburant: "Diesel",
+      places:    "5 places",
+      puissance: "367 CV",
+      images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2020_Mercedes-Benz_GLE_450_4MATIC_%28W167%29%2C_front_8.6.19.jpg/320px-2020_Mercedes-Benz_GLE_450_4MATIC_%28W167%29%2C_front_8.6.19.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2021_Mercedes-Benz_GLE_400d_4Matic_AMG_Line_%28facelift%2C_W167%29%2C_front_8.15.21.jpg/320px-2021_Mercedes-Benz_GLE_400d_4Matic_AMG_Line_%28facelift%2C_W167%29%2C_front_8.15.21.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Mercedes-Benz_GLE_Coup%C3%A9_C167_IMG_3844.jpg/320px-Mercedes-Benz_GLE_Coup%C3%A9_C167_IMG_3844.jpg"
+    ]
+    },
+
+    
+    {
+      nom:       "Toyota Yaris 2024",
+      prix:      "350 DH/mois",
+      annee:     "2024",
+      boite:     "Manuelle",
+      carburant: "Essence",
+      places:    "5 places",
+      puissance: "95 CV",
+      images: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/2020_Toyota_Yaris_sedan_%28China%29%2C_front_8.15.19.jpg/320px-2020_Toyota_Yaris_sedan_%28China%29%2C_front_8.15.19.jpg"
+      ]
+    }
+  ];
+  // Variable pour retenir la voiture sélectionnée
+  var voitureChoisie = "";
+
+  // ---- AFFICHER LES CARTES ----
+  // On prend le div "grille" et on ajoute une carte pour chaque voiture
+  var grille = document.getElementById('grille');
+
+  for (var i = 0; i < voitures.length; i++) {
+    var v = voitures[i];
+
+    grille.innerHTML += `
+      <div class="carte" onclick="ouvrir('${v.nom}')">
+        <img src="${v.image}" alt="${v.nom}">
+        <div class="info">
+          <h3>${v.nom}</h3>
+          <p class="prix">${v.prix}</p>
+          <button>Voir les détails →</button>
+        </div>
+      </div>
+    `;
+  }
+
+  // ---- OUVRIR LA MODAL ----
+  // Quand on clique sur une voiture, on cherche ses données et on les affiche
+  function ouvrir(nom) {
+
+    // Chercher la voiture dans la liste
+    var v;
+    for (var i = 0; i < voitures.length; i++) {
+      if (voitures[i].nom === nom) {
+        v = voitures[i];
+      }
+    }
+
+    // Remplir la modal avec les données de cette voiture
+    document.getElementById('m-image').src      = v.image;
+    document.getElementById('m-nom').textContent = v.nom;
+    document.getElementById('m-prix').textContent = v.prix;
+    document.getElementById('m-annee').textContent = v.annee;
+    document.getElementById('m-boite').textContent = v.boite;
+    document.getElementById('m-carburant').textContent = v.carburant;
+    document.getElementById('m-places').textContent = v.places;
+    document.getElementById('m-puissance').textContent = v.puissance;
+
+    // Retenir le nom pour la réservation
+    voitureChoisie = v.nom;
+
+    // Afficher la modal
+    document.getElementById('modal').classList.add('active');
+  }
+
+  // ---- FERMER LA MODAL ----
+  function fermer() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  // ---- RÉSERVER ----
+  function reserver() {
+    alert("✅ Réservation pour : " + voitureChoisie);
+    fermer();
+  }
+  var indexImage = 0;      // image actuellement affichée
+var imagesActuelles = []; // images de la voiture ouverte
+
+function ouvrir(index) {
+  var v = voitures[index];
+
+  // Réinitialiser l'index image
+  indexImage = 0;
+  imagesActuelles = v.images;
+
+  // Afficher la première image
+  document.getElementById('m-image').src = imagesActuelles[0];
+
+  // Créer les miniatures
+  var thumbs = document.getElementById('thumbnails');
+  thumbs.innerHTML = '';
+  for (var i = 0; i < imagesActuelles.length; i++) {
+    thumbs.innerHTML += `
+      <img src="${imagesActuelles[i]}"
+           class="${i === 0 ? 'active' : ''}"
+           onclick="allerImage(${i})">
+    `;
+  }
+
+  // Remplir les infos
+  document.getElementById('m-nom').textContent       = v.nom;
+  document.getElementById('m-prix').textContent      = v.prix;
+  document.getElementById('m-annee').textContent     = v.annee;
+  document.getElementById('m-boite').textContent     = v.boite;
+  document.getElementById('m-carburant').textContent = v.carburant;
+  document.getElementById('m-places').textContent    = v.places;
+  document.getElementById('m-puissance').textContent = v.puissance;
+
+  voitureChoisie = v.nom;
+  document.getElementById('modal').classList.add('active');
+}
+
+// Changer image avec ‹ ›
+function changerImage(direction) {
+  indexImage += direction;
+
+  // Boucle circulaire
+  if (indexImage < 0) indexImage = imagesActuelles.length - 1;
+  if (indexImage >= imagesActuelles.length) indexImage = 0;
+
+  mettreAJourImage();
+}
+
+// Aller directement à une image via miniature
+function allerImage(i) {
+  indexImage = i;
+  mettreAJourImage();
+}
+
+// Mettre à jour l'image principale + miniature active
+function mettreAJourImage() {
+  document.getElementById('m-image').src = imagesActuelles[indexImage];
+
+  // Mettre à jour la classe active sur les miniatures
+  var thumbs = document.getElementById('thumbnails').querySelectorAll('img');
+  for (var i = 0; i < thumbs.length; i++) {
+    thumbs[i].classList.remove('active');
+  }
+  thumbs[indexImage].classList.add('active');
+}
+
+</script>
+
+</body>
+</html>

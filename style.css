@@ -1,0 +1,316 @@
+/* ===== PALETTE ===== */
+:root {
+  --oxblood:  #5E1E2B;
+  --raw-oak:  #D2BCA8;
+  --plaster:  #DADCDD;
+  --concrete: #9C9D9B;
+  --obsidian: #202020;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(160deg,
+    var(--plaster) 0%,
+    var(--raw-oak) 60%,
+    var(--plaster) 100%);
+  color: var(--obsidian);
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right,
+    var(--raw-oak) 0%,
+    var(--oxblood) 100%);
+  padding: 1.2rem 2.5rem;
+  min-height: 90px;
+  border-bottom: 3px solid var(--oxblood);
+  box-shadow: 0 4px 20px rgba(94, 30, 43, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 70px;
+}
+
+.nav-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--obsidian);
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+}
+
+.nav-brand-ext {
+  color: var(--oxblood);
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--obsidian);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.4rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: var(--oxblood);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--plaster);
+  font-weight: 900;
+}
+
+.nav-buttons { display: flex; gap: 0.8rem; }
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--oxblood);
+  color: var(--oxblood);
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: all 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-outline:hover {
+  background-color: var(--oxblood);
+  color: var(--plaster);
+}
+
+.btn-solid {
+  background-color: var(--oxblood);
+  border: 1.5px solid var(--oxblood);
+  color: var(--plaster);
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: all 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-solid:hover {
+  background-color: #7a2438;
+  box-shadow: 0 0 12px rgba(94, 30, 43, 0.6);
+}
+
+/* --- HERO --- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 150px;
+  gap: 40px;
+  flex-wrap: wrap;
+  background: linear-gradient(to bottom,
+  #5E1E2B 0%,     /* Grenat foncé */
+  #8a2a3d 15%,    /* Grenat clair */
+  #D2BCA8 55%,    /* Beige chaud  */
+  #DADCDD 80%,    /* Plaster      */
+  #f5f5f5 100%    /* Blanc doux   */
+);
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero h1 span { color: var(--oxblood); }
+.hero p {
+  color: var(--concrete);
+  margin-bottom: 35px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  background: linear-gradient(90deg,
+    var(--oxblood) 0%,
+    #8a2a3d 100%);
+  color: var(--plaster);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: linear-gradient(90deg, #8a2a3d 0%, var(--oxblood) 100%);
+  box-shadow: 0 0 12px rgba(94, 30, 43, 0.5);
+}
+
+.hero-img {
+  border-radius: 12px;
+  padding: 10px;
+  width: 600px;
+  text-align: center;
+}
+
+.hero-img img { width: 95%; border-radius: 5px; }
+
+/* --- STEPS --- */
+.steps {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(to bottom,
+  #f5f5f5 100% ,
+  var(--plaster) 0%)
+}
+
+.steps .sub {
+  color: var(--concrete);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.steps h2 {
+  font-size: 1.6rem;
+  margin: 8px 0 30px;
+  color: var(--obsidian);
+}
+
+.steps-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.step {
+  background: var(--plaster);
+  border-radius: 12px;
+  padding: 25px;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.step .icon { font-size: 2rem; margin-bottom: 10px; }
+.step h3 { color: var(--oxblood); margin-bottom: 8px; }
+.step p { color: var(--obsidian); font-size: 0.85rem; line-height: 1.5; }
+
+/* --- VOITURES --- */
+.cars {
+  padding: 50px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom,
+  #f5f5f5 0%,      /* Blanc doux  — haut    */
+  #D2BCA8 55%,     /* Beige chaud — milieu  */
+  #8a2a3d 70%,     /* Grenat clair           */
+  #5E1E2B 100%     /* Grenat foncé — bas    */
+)
+}
+
+.cars .sub {
+  color: var(--concrete);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cars h2 {
+  font-size: 1.6rem;
+  margin: 8px 0 30px;
+  color: var(--obsidian);
+}
+
+.cars-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.car {
+  background: linear-gradient(135deg,
+    var(--raw-oak) 0%,
+    var(--plaster) 100%);
+  border-radius: 12px;
+  width: 450px;
+  height: 400px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.car:hover { transform: translateY(-5px); }
+.car img { width: 100%; height: 160px; object-fit: cover; }
+
+.car-info { padding: 15px; text-align: left; }
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--concrete);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  color: var(--concrete);
+  margin-bottom: 8px;
+}
+
+.car-info h3 { margin-bottom: 5px; color: var(--obsidian); }
+.car-info .prix {
+  color: var(--oxblood);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.car-info button {
+  width: 100%;
+  padding: 10px;
+  background: var(--oxblood);
+  color: var(--plaster);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.car-info button:hover { background: #7a2535; }
+
+/* --- FOOTER --- */
+footer {
+  background: linear-gradient(135deg,
+    var(--obsidian) 0%,
+    var(--oxblood) 100%);
+  color: var(--plaster);
+  text-align: center;
+  padding: 25px;
+}
