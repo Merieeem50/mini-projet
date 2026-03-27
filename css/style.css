@@ -322,4 +322,9 @@ footer {
   color: var(--plaster);
   text-align: center;
   padding: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  
 }
