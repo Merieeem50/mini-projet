@@ -180,9 +180,9 @@ body {
 .steps {
   text-align: center;
   padding: 50px 20px;
-  /*background: linear-gradient(to bottom,*/
+  /*background: linear-gradient(to bottom,
   #f5f5f5 100% ,
-  var(--plaster) 0%)
+  var(--plaster) 0%);*/
 }
 
 .steps .sub {
