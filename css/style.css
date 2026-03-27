@@ -139,13 +139,13 @@ body {
   /*background: var(--raw-oak);*/
 }
 
-.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero h1 { font-size: 35px; margin-bottom: 10px; }
 .hero h1 span { color: var(--oxblood); }
 .hero p {
   color: var(--concrete);
   margin-bottom: 35px;
   line-height: 1.6;
-  font-size: 1.1rem;
+  font-size: 17px;
 }
 
 .hero-btn {
