@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Voitures</title>
+
+<!-- نفس CSS ديال الصفحة الرئيسية -->
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/voitures.css">
+
+
+</head>
+
+<body>
+
+<!-- NAVBAR نفس ديال index -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <img src="./img/logo.png" style="height: 55px;">
+    <span class="nav-brand">
+      SiyaraGo<span class="nav-brand-ext">.ma</span>
+    </span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="voiture.html" class="active">Voitures</a></li>
+    <li><a href="reservation.html">Reserver</a></li>
+    <li><a href="apropos.html">a propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- SECTION VOITURES -->
+<div class="cars">
+  <p class="sub">NOS VÉHICULES</p>
+  <h2>Explorez Nos Voitures</h2>
+
+  <div class="cars-row" id="liste"></div>
+</div>
+
+
+<script>
+
+/* نفس السيارات (6) */
+const voitures = [
+  {
+    nom: "Mercedes Benz 2024",
+    prix: "400 DH/jour",
+    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600",
+    boite: "Automatique",
+    carburant: "Diesel",
+    places: "5",
+    coffre: "Grand",
+    puissance: "190 ch"
+  },
+  {
+    nom: "Toyota Yaris 2024",
+    prix: "150 DH/jour",
+    image: "https://images.unsplash.com/photo-1583267746897-2cf415887172?w=600",
+    boite: "Manuelle",
+    carburant: "Essence",
+    places: "5",
+    coffre: "Petit",
+    puissance: "110 ch"
+  },
+  {
+    nom: "BMW Série 3 2024",
+    prix: "300 DH/jour",
+    image: "https://unsplash.com/photos/a-black-car-parked-on-the-side-of-a-road-Hcg0hqn4SbU",
+    boite: "Automatique",
+    carburant: "Diesel",
+    places: "5",
+    coffre: "Grand",
+    puissance: "184 ch"
+  },
+  {
+    nom: "Dacia Logan 2024",
+    prix: "100 DH/jour",
+    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600",
+    boite: "Manuelle",
+    carburant: "Essence",
+    places: "5",
+    coffre: "Grand",
+    puissance: "90 ch"
+  },
+  {
+    nom: "Renault Clio 2024",
+    prix: "150 DH/jour",
+    image: "https://images.unsplash.com/photo-1549921296-3ecf9c2f1f1c?w=600",
+    boite: "Manuelle",
+    carburant: "Diesel",
+    places: "5",
+    coffre: "Moyen",
+    puissance: "100 ch"
+  },
+  {
+    nom: "Hyundai Tucson 2024",
+    prix: "200 DH/jour",
+    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6d9?w=600",
+    boite: "Automatique",
+    carburant: "Hybride",
+    places: "5",
+    coffre: "Très grand",
+    puissance: "230 ch"
+  }
+];
+
+/* affichage */
+const liste = document.getElementById("liste");
+
+voitures.forEach(v => {
+  liste.innerHTML += `
+    <div class="car">
+      <img src="${v.image}">
+      <div class="car-info">
+        <span class="badge">2024</span>
+        <h3>${v.nom}</h3>
+        <p class="prix">${v.prix}</p>
+
+        <button onclick='goDetail(${JSON.stringify(v)})'>
+          Voir détails
+        </button>
+
+      </div>
+    </div>
+  `;
+});
+
+/* navigation vers détail */
+function goDetail(v){
+  localStorage.setItem("voiture", JSON.stringify(v));
+  window.location.href = "details.html";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr" id="iscription">
+<head>
+  <meta charset="UTF-8">
+  <title>S'inscrire — SiyaraGo</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+
+    /* ===== PAGE INSCRIPTION ===== */
+    .auth-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      flex: 1;
+    }
+
+    /* ===== CARTE FORMULAIRE ===== */
+    .auth-box {
+      background: white;
+      border-radius: 24px;
+      padding: 50px 45px;
+      width: 500px;
+      box-shadow: 0 10px 40px rgba(94, 30, 43, 0.15);
+      border-top: 6px solid var(--oxblood);
+    }
+
+    /* ===== LOGO + TITRE ===== */
+    .auth-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .auth-header img {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .auth-header h2 {
+      font-size: 28px;
+      color: var(--oxblood);
+      font-family: 'Times New Roman', Times, serif;
+      letter-spacing: 1px;
+    }
+
+    .auth-header p {
+      font-size: 14px;
+      color: var(--concrete);
+      margin-top: 6px;
+    }
+
+    /* ===== LIGNE NOM/PRÉNOM ===== */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    /* ===== GROUPE INPUT ===== */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--concrete);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+
+    /* ===== CHAMP AVEC ICÔNE ===== */
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap span {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    .input-wrap input,
+    .input-wrap select {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      font-size: 15px;
+      border: 1.5px solid var(--plaster);
+      border-radius: 10px;
+      background: #fafafa;
+      color: var(--obsidian);
+      outline: none;
+      transition: border 0.3s ease, background 0.3s ease;
+    }
+
+    .input-wrap input:focus,
+    .input-wrap select:focus {
+      border-color: var(--oxblood);
+      background: white;
+    }
+
+    /* ===== MESSAGE ERREUR ===== */
+    .error-msg {
+      font-size: 12px;
+      color: #e63946;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .error-msg.visible {
+      display: block;
+    }
+
+    /* ===== FORCE MOT DE PASSE ===== */
+    .password-strength {
+      height: 5px;
+      border-radius: 5px;
+      margin-top: 8px;
+      background: var(--plaster);
+      overflow: hidden;
+    }
+
+    .password-strength-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 5px;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .strength-text {
+      font-size: 12px;
+      margin-top: 4px;
+      color: var(--concrete);
+    }
+
+    /* ===== CONDITIONS ===== */
+    .conditions {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--concrete);
+    }
+
+    .conditions input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      accent-color: var(--oxblood);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .conditions a {
+      color: var(--oxblood);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .conditions a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== BOUTON S'INSCRIRE ===== */
+    .btn-inscrire {
+      width: 100%;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(90deg,
+        var(--oxblood) 0%,
+        #8a2a3d 100%);
+      color: var(--plaster);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Times New Roman', Times, serif;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+
+    .btn-inscrire:hover {
+      background: linear-gradient(90deg,
+        #8a2a3d 0%,
+        var(--oxblood) 100%);
+      box-shadow: 0 6px 20px rgba(94, 30, 43, 0.4);
+    }
+
+    /* ===== SÉPARATEUR ===== */
+    .separator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .separator hr {
+      flex: 1;
+      border: none;
+      border-top: 1.5px solid var(--plaster);
+    }
+
+    .separator span {
+      font-size: 13px;
+      color: var(--concrete);
+      white-space: nowrap;
+    }
+
+    /* ===== DÉJÀ UN COMPTE ===== */
+    .auth-footer {
+      text-align: center;
+      font-size: 14px;
+      color: var(--concrete);
+    }
+
+    .auth-footer a {
+      color: var(--oxblood);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== SUCCESS MESSAGE ===== */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .success-box .check {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+
+    .success-box h3 {
+      font-size: 24px;
+      color: var(--oxblood);
+      font-family: 'Times New Roman', Times, serif;
+      margin-bottom: 10px;
+    }
+
+    .success-box p {
+      color: var(--concrete);
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    .btn-accueil {
+      padding: 12px 35px;
+      background: var(--oxblood);
+      color: var(--plaster);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+      transition: all 0.3s ease;
+    }
+
+    .btn-accueil:hover {
+      background: #7a2535;
+      box-shadow: 0 4px 15px rgba(94, 30, 43, 0.3);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <img src="./img/logo.png" alt="Logo" style="height: 55px;">
+    <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="voiture.html">Voitures</a></li>
+    <li><a href="reservation.html">Réserver</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-buttons">
+    <button class="btn-outline" onclick="window.location.href='inscription.html'">S'inscrire</button>
+    <button class="btn-solid"   onclick="window.location.href='connexion.html'">Connexion</button>
+  </div>
+</nav>
+
+<!-- ===== PAGE ===== -->
+<div class="auth-page">
+  <div class="auth-box">
+
+    <!-- FORMULAIRE -->
+    <div id="form-section">
+
+      <!-- EN-TÊTE -->
+      <div class="auth-header">
+        <img src="./img/logo.png" alt="SiyaraGo">
+        <h2>Créer un compte</h2>
+        <p>Rejoignez SiyaraGo et réservez facilement</p>
+      </div>
+
+      <!-- NOM & PRÉNOM -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <div class="input-wrap">
+            <span>👤</span>
+            <input type="text" id="prenom" placeholder="Votre prénom"
+              oninput="clearError('prenom-err')">
+          </div>
+          <p class="error-msg" id="prenom-err">Prénom requis</p>
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <div class="input-wrap">
+            <span>👤</span>
+            <input type="text" id="nom" placeholder="Votre nom"
+              oninput="clearError('nom-err')">
+          </div>
+          <p class="error-msg" id="nom-err">Nom requis</p>
+        </div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Adresse email</label>
+        <div class="input-wrap">
+          <span>📧</span>
+          <input type="email" id="email" placeholder="exemple@gmail.com"
+            oninput="clearError('email-err')">
+        </div>
+        <p class="error-msg" id="email-err">Email invalide</p>
+      </div>
+
+      <!-- TÉLÉPHONE -->
+      <div class="form-group">
+        <label>Téléphone</label>
+        <div class="input-wrap">
+          <span>📞</span>
+          <input type="tel" id="telephone" placeholder="06XXXXXXXX"
+            oninput="clearError('tel-err')">
+        </div>
+        <p class="error-msg" id="tel-err">Numéro invalide (ex: 06XXXXXXXX)</p>
+      </div>
+
+      <!-- VILLE -->
+      <div class="form-group">
+        <label>Ville</label>
+        <div class="input-wrap">
+          <span>📍</span>
+          <select id="ville" onchange="clearError('ville-err')">
+            <option value="">-- Choisir une ville --</option>
+            <option>Casablanca</option>
+            <option>Rabat</option>
+            <option>Marrakech</option>
+            <option>Agadir</option>
+            <option>Fès</option>
+            <option>Tanger</option>
+          </select>
+        </div>
+        <p class="error-msg" id="ville-err">Veuillez choisir une ville</p>
+      </div>
+
+      <!-- MOT DE PASSE -->
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <div class="input-wrap">
+          <span>🔒</span>
+          <input type="password" id="password" placeholder="Minimum 8 caractères"
+            oninput="checkStrength(); clearError('pass-err')">
+        </div>
+        <div class="password-strength">
+          <div class="password-strength-bar" id="strength-bar"></div>
+        </div>
+        <p class="strength-text" id="strength-text"></p>
+        <p class="error-msg" id="pass-err">Mot de passe trop court (min 8 caractères)</p>
+      </div>
+
+      <!-- CONFIRMER MOT DE PASSE -->
+      <div class="form-group">
+        <label>Confirmer le mot de passe</label>
+        <div class="input-wrap">
+          <span>🔑</span>
+          <input type="password" id="confirm" placeholder="Répétez le mot de passe"
+            oninput="clearError('confirm-err')">
+        </div>
+        <p class="error-msg" id="confirm-err">Les mots de passe ne correspondent pas</p>
+      </div>
+
+      <!-- CONDITIONS -->
+      <div class="conditions">
+        <input type="checkbox" id="cgu">
+        <label for="cgu">
+          J'accepte les
+          <a href="#">conditions d'utilisation</a>
+          et la
+          <a href="#">politique de confidentialité</a>
+          de SiyaraGo
+        </label>
+      </div>
+
+      <!-- BOUTON -->
+      <button class="btn-inscrire" onclick="inscrire()">
+        Créer mon compte
+      </button>
+
+      <!-- SÉPARATEUR -->
+      <div class="separator">
+        <hr><span>Déjà inscrit ?</span><hr>
+      </div>
+
+      <!-- LIEN CONNEXION -->
+      <div class="auth-footer">
+        <a href="connexion.html">Se connecter →</a>
+      </div>
+
+    </div>
+
+    <!-- ===== SUCCESS ===== -->
+    <div class="success-box" id="success-section">
+      <div class="check">✅</div>
+      <h3>Compte créé avec succès !</h3>
+      <p id="success-msg">Bienvenue sur SiyaraGo !</p>
+      <button class="btn-accueil"
+        onclick="window.location.href='index.html'">
+        Retour à l'accueil
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2024 SiyaraGo — Projet fictif</p>
+</footer>
+
+<script>
+
+// ===== FORCE MOT DE PASSE =====
+function checkStrength() {
+  let pass = document.getElementById("password").value;
+  let bar  = document.getElementById("strength-bar");
+  let txt  = document.getElementById("strength-text");
+
+  let score = 0;
+  if (pass.length >= 8)              score++;
+  if (/[A-Z]/.test(pass))            score++;
+  if (/[0-9]/.test(pass))            score++;
+  if (/[^A-Za-z0-9]/.test(pass))     score++;
+
+  let levels = [
+    { width: "0%",   color: "",          text: "" },
+    { width: "25%",  color: "#e63946",   text: "❌ Très faible" },
+    { width: "50%",  color: "#f4a261",   text: "⚠️ Faible" },
+    { width: "75%",  color: "#2a9d8f",   text: "✅ Moyen" },
+    { width: "100%", color: "#2d6a4f",   text: "💪 Fort" },
+  ];
+
+  bar.style.width      = levels[score].width;
+  bar.style.background = levels[score].color;
+  txt.innerText        = levels[score].text;
+}
+
+// ===== EFFACER ERREUR =====
+function clearError(id) {
+  document.getElementById(id).classList.remove("visible");
+}
+
+// ===== AFFICHER ERREUR =====
+function showError(id) {
+  document.getElementById(id).classList.add("visible");
+}
+
+// ===== INSCRIPTION =====
+function inscrire() {
+  let prenom    = document.getElementById("prenom").value.trim();
+  let nom       = document.getElementById("nom").value.trim();
+  let email     = document.getElementById("email").value.trim();
+  let telephone = document.getElementById("telephone").value.trim();
+  let ville     = document.getElementById("ville").value;
+  let password  = document.getElementById("password").value;
+  let confirm   = document.getElementById("confirm").value;
+  let cgu       = document.getElementById("cgu").checked;
+
+  let valid = true;
+
+  // Validations
+  if (!prenom) { showError("prenom-err"); valid = false; }
+  if (!nom)    { showError("nom-err");    valid = false; }
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showError("email-err"); valid = false;
+  }
+
+  if (!telephone || !/^0[5-7][0-9]{8}$/.test(telephone)) {
+    showError("tel-err"); valid = false;
+  }
+
+  if (!ville) { showError("ville-err"); valid = false; }
+
+  if (password.length < 8) {
+    showError("pass-err"); valid = false;
+  }
+
+  if (password !== confirm) {
+    showError("confirm-err"); valid = false;
+  }
+
+  if (!cgu) {
+    alert("Veuillez accepter les conditions d'utilisation !");
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  // Sauvegarde locale (simulation)
+  localStorage.setItem("user", JSON.stringify({
+    prenom, nom, email, telephone, ville
+  }));
+
+  // Affiche le succès
+  document.getElementById("form-section").style.display    = "none";
+  document.getElementById("success-section").style.display = "block";
+  document.getElementById("success-msg").innerText =
+    "Bienvenue " + prenom + " ! Votre compte a été créé avec succès.";
+}
+
+</script>
+</body>
+</html>

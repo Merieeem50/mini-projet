@@ -13,7 +13,9 @@ body {
   font-family: Arial, sans-serif;
   color: var(--obsidian);
   min-height: 100vh;
-  background: linear-gradient(to bottom,var(--raw-oak),var(--plaster))
+  background-color: #F5F5F0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* --- NAVBAR --- */
@@ -21,7 +23,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--raw-oak);
   padding: 20px 40px;
   margin: 20px;
   border-bottom: 3px solid var(--oxblood);
@@ -32,6 +34,7 @@ body {
   border-radius: 20px;
 }
 
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -40,7 +43,7 @@ body {
 }
 
 .nav-brand {
-  font-size: 2rem;
+  font-size: 32px;
   font-weight: bold;
   color: var(--obsidian);
   font-family: 'Segoe UI', sans-serif;
@@ -49,7 +52,7 @@ body {
 
 .nav-brand-ext {
   color: var(--oxblood);
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
 .nav-links {
@@ -63,7 +66,7 @@ body {
 .nav-links a {
   color: var(--obsidian);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   padding: 7px 0;
   position: relative;
@@ -87,25 +90,25 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--concrete);
+  color: var(--oxblood);
   font-weight: 900;
 }
 
-.nav-buttons { display: flex; gap: 0.8rem; }
+.nav-buttons { display: flex; gap: 10px; }
 
 .btn-outline {
   background: transparent;
   border: 2px solid var(--oxblood);
   color: var(--oxblood);
-  padding: 0.6rem 1.5rem;
+  padding: 7px 20px;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 1.15rem;
+  font-size: 16px;
   transition: all 0.3s ease;
   font-family: 'Times New Roman', Times, serif;
 }
 
-.btn-outline:hover {
+.btn-s'inscrire:hover {
   background-color: var(--oxblood);
   color: var(--plaster);
 }
@@ -122,42 +125,57 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.btn-solid:hover {
+.btn-connexion:hover {
   background-color: #7a2438;
   box-shadow: 0 0 12px rgba(94, 30, 43, 0.6);
 }
 
 /* --- HERO --- */
 .hero {
-  
-  display: inline-block;
+  display: flex;              /* ✅ flex au lieu de inline-block */
   align-items: center;
-  /*justify-content: space-between;*/
+  justify-content: space-between;
   padding: 60px 150px;
   gap: 40px;
   flex-wrap: wrap;
-  /*background: var(--raw-oak);*/
+  min-height: 70vh;           /* ✅ donne de la hauteur */
 }
 
-.hero h1 { font-size: 35px; margin-bottom: 10px; }
-.hero h1 span { color: var(--oxblood); }
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  color: var(--obsidian);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.hero h1 span { color: var(--oxblood);
+font-family: 'Times New Roman', Times, serif;
+font-weight: bold;
+font-size: 75px;
+}
+
 .hero p {
-  color: var(--concrete);
+  color: var(--obsidian);
   margin-bottom: 35px;
   line-height: 1.6;
-  font-size: 17px;
+  font-size: 25px;
 }
 
 .hero-btn {
-  padding: 12px 28px;
-  background: linear-gradient(90deg,
-    var(--oxblood) 0%,
-    #8a2a3d 100%);
+  padding: 18px 32px;
+  background: linear-gradient(90deg, var(--oxblood) 0%, #8a2a3d 100%);
   color: var(--plaster);
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 25px;
   font-family: 'Times New Roman', Times, serif;
   transition: all 0.3s ease;
 }
@@ -168,129 +186,84 @@ body {
 }
 
 .hero-img {
+  flex: 1;                    /* ✅ prend l'espace disponible */
+  min-width: 280px;
+  max-width: 600px;
   border-radius: 12px;
   padding: 10px;
-  width: 600px;
   text-align: center;
 }
 
-.hero-img img { width: 95%; border-radius: 5px; }
-
+.hero-img img {
+  width: 95%;
+  border-radius: 5px;
+  box-shadow: 0 8px 30px rgba(94, 30, 43, 0.2); /* ✅ ombre élégante */
+}
 /* --- STEPS --- */
 .steps {
   text-align: center;
-  padding: 50px 20px;
-  /*background: linear-gradient(to bottom,
-  #f5f5f5 100% ,
-  var(--plaster) 0%);*/
+  padding: 80px 40px;
+  width: 100%;
+  
+  
 }
 
 .steps .sub {
-  color: var(--concrete);
-  font-size: 0.85rem;
+  color: var(--oxblood);
+  font-size: 30px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .steps h2 {
-  font-size: 1.6rem;
+  font-size: 60px;
   margin: 8px 0 30px;
   color: var(--obsidian);
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .steps-row {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;               /* ✅ plus d'espace entre les cartes */
   flex-wrap: wrap;
+  max-width: 1100px;       /* ✅ limite la largeur max */
+  margin: 0 auto;
 }
 
 .step {
-  background: var(--plaster);
-  border-radius: 12px;
-  padding: 25px;
-  width: 200px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.step .icon { font-size: 2rem; margin-bottom: 10px; }
-.step h3 { color: var(--oxblood); margin-bottom: 8px; }
-.step p { color: var(--obsidian); font-size: 0.85rem; line-height: 1.5; }
-
-/* --- VOITURES --- */
-.cars {
-  padding: 50px 20px;
-  text-align: center;
-  /*background: var(--raw-oak);*/
-}
-
-.cars .sub {
-  color: var(--concrete);
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.cars h2 {
-  font-size: 1.6rem;
-  margin: 8px 0 30px;
-  color: var(--obsidian);
-}
-
-.cars-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.car {
   background: linear-gradient(135deg,
     var(--raw-oak) 0%,
     var(--plaster) 100%);
   border-radius: 12px;
-  width: 450px;
-  height: 400px;
-  overflow: hidden;
+  padding: 40px 30px;
+  width: 100%;          /* ✅ chaque carte prend sa colonne */
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
 }
 
-.car:hover { transform: translateY(-5px); }
-.car img { width: 100%; height: 160px; object-fit: cover; }
+.step .icon { font-size: 40px; margin-bottom: 10px; }
+.step h3 { color: var(--oxblood); margin-bottom: 8px; font-size: 30px; font-family: Arial, Helvetica, sans-serif; }
+.step p { color: var(--obsidian); font-size: 20px; line-height: 1.5; font-family: 'Times New Roman', Times, serif; font-weight: bold; }
 
-.car-info { padding: 15px; text-align: left; }
+/* --- VOITURES --- */
+.cars { padding: 60px 40px; text-align: center; }
 
-.badge {
-  display: inline-block;
-  border: 1px solid var(--concrete);
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 0.75rem;
-  color: var(--concrete);
-  margin-bottom: 8px;
+.cars h2 { font-size: 25px; margin: 8px 0 35px; color: var(--oxblood); font-family: 'Times New Roman', Times, serif ; }
+
+.cars-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.car-info h3 { margin-bottom: 5px; color: var(--obsidian); }
-.car-info .prix {
-  color: var(--oxblood);
-  font-weight: bold;
-  margin-bottom: 12px;
+.nos {
+  font-size: 50px;
+  color: var(--obsidian);
+  font-family: 'arial', 'Helvetica', sans-serif;
 }
 
-.car-info button {
-  width: 100%;
-  padding: 10px;
-  background: var(--oxblood);
-  color: var(--plaster);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.car-info button:hover { background: #7a2535; }
 
 .cars-grid {
       display: grid;
@@ -307,12 +280,71 @@ body {
     }
     .car-card img {
       width: 100%;
-      height: 150px;
+      height: 300px;
       object-fit: cover;
       border-radius: 8px;
+      margin-bottom: 40px;
     }
-    .car-card h3 { margin: 10px 0 5px; font-size: 1rem; }
-    .car-card p { color: #e63946; font-weight: bold; }
+    .car-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 27px;
+      font-weight: bold;
+      color: var(--obsidian);
+      font-family: 'Segoe UI', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .car-card p {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--oxblood);
+      margin-bottom: 30px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-reserver {
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  background: var(--oxblood);
+  color: var(--plaster);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.5px;
+  margin-top: 12px;
+}
+
+.btn-reserver:hover {
+  background: #7a2535;
+  box-shadow: 0 4px 12px rgba(94, 30, 43, 0.35);
+}
+
+    .cars-more {
+      text-align: center;
+      margin-top: 30px;
+}
+
+.btn-more {
+  padding: 16px 38px;
+  background: transparent;
+  border: 2px solid var(--oxblood);
+  color: var(--oxblood);
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 22px;
+  transition: all 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 20px;
+}
+
+.btn-more:hover {
+  background: var(--oxblood);
+  color: var(--plaster);
+}
 
 /* --- FOOTER --- */
 footer {
@@ -322,9 +354,9 @@ footer {
   color: var(--plaster);
   text-align: center;
   padding: 25px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  margin-top: auto;  /* ✅ colle le footer en bas */
   width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
   
 }

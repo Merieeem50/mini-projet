@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contact</title>
+
+<!-- نفس CSS -->
+<link rel="stylesheet" href="./css/style.css">
+
+<style>
+.contact-container {
+  max-width: 600px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #5E1E2B;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #7a2535;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <img src="./img/logo.png" style="height: 55px;">
+    <span class="nav-brand">
+      SiyaraGo<span class="nav-brand-ext">.ma</span>
+    </span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="voiture.html">Voitures</a></li>
+    <li><a href="reservation.html">Reserver</a></li>
+    <li><a href="apropos.html">a propos</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- FORMULAIRE -->
+<div class="contact-container">
+
+  <h2>Contactez-nous</h2>
+
+  <input type="text" id="nom" placeholder="Votre nom" required>
+
+  <!-- ✅ email مع validation -->
+  <input type="email" id="email" placeholder="Votre email" required>
+
+  <textarea id="message" rows="5" placeholder="Votre message"></textarea>
+
+  <button onclick="envoyer()">Envoyer</button>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+function envoyer(){
+
+  const nom = document.getElementById("nom").value;
+  const email = document.getElementById("email").value;
+
+  /* regex email */
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(nom === ""){
+    alert("Veuillez entrer votre nom !");
+    return;
+  }
+
+  if(email === ""){
+    alert("Veuillez entrer votre email !");
+    return;
+  }
+
+  if(!emailRegex.test(email)){
+    alert("❌ Email non valide !");
+    return;
+  }
+
+  alert("✅ Message envoyé avec succès !");
+}
+</script>
+
+</body>
+</html>
