@@ -24,6 +24,23 @@ img { width: 100%; }
 </head>
 
 <body>
+  <nav class="navbar">
+  <div class="nav-logo">
+    <img src="./img/logo.png" alt="Logo" style="height: 55px;">
+    <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="voiture.html">Voitures</a></li>
+    <li><a href="reservation.html">Réserver</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-buttons">
+    <button class="btn-sincrire" onclick="window.location.href='inscription.html'">S'inscrire</button>
+    <button class="btn-connexion"   onclick="window.location.href='connexion.html'">Connexion</button>
+  </div>
+</nav>
 
 <div class="card">
   <img id="image">
@@ -36,13 +53,7 @@ img { width: 100%; }
   <div class="spec">🧳 Coffre: <span id="coffre"></span></div>
   <div class="spec">💪 Puissance: <span id="puissance"></span></div>
 </div>
-<ul class="nav-links">
-    <li><a href="index.html" class="active">Accueil</a></li>
-    <li><a href="voiture.html">Voitures</a></li>
-    <li><a href="reservation.html">Réserver</a></li>
-    <li><a href="apropos.html">À propos</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+
 <script>
 
 const voiture = JSON.parse(localStorage.getItem("voiture"));

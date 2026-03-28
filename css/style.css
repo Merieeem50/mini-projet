@@ -108,12 +108,12 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.btn-sinscrire:hover {
+.btn-sinscrire :hover {
   background-color: var(--oxblood);
   color: var(--plaster);
 }
 
-.btn-solid {
+.btn-connexion {
   background-color: var(--oxblood);
   border: 1.5px solid var(--oxblood);
   color: var(--plaster);
@@ -328,7 +328,7 @@ font-size: 75px;
       margin-top: 30px;
 }
 
-.btn-more {
+.btn-plus {
   padding: 16px 38px;
   background: transparent;
   border: 2px solid var(--oxblood);
@@ -341,7 +341,7 @@ font-size: 75px;
   margin-top: 20px;
 }
 
-.btn-more:hover {
+.btn-plus:hover {
   background: var(--oxblood);
   color: var(--plaster);
 }

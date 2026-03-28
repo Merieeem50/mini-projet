@@ -9,12 +9,11 @@
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       display: flex;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
 
-    .auth-box {
+    .page {
       background: white;
       padding: 30px;
       border-radius: 12px;
@@ -87,13 +86,10 @@
     <li><a href="apropos.html">À propos</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="nav-buttons">
-    <button class="btn-outline" onclick="window.location.href='inscription.html'">S'inscrire</button>
-    <button class="btn-solid"   onclick="window.location.href='connexion.html'">Connexion</button>
-  </div>
+  
 </nav>
 
-<div class="auth-box">
+<div class="page ">
   <h2>Créer un compte</h2>
 
   <div id="form-section">
@@ -138,7 +134,7 @@ function inscrire() {
   let password = document.getElementById("password").value;
   let confirm  = document.getElementById("confirm").value;
 
-  // Vérifications basiques
+ 
   if (!prenom || !nom || !email || !password) {
     alert("Veuillez remplir tous les champs !");
     return;
@@ -148,7 +144,7 @@ function inscrire() {
     return;
   }
 
-  // Succès
+
   document.getElementById("form-section").style.display = "none";
   document.getElementById("success-section").style.display = "block";
   document.getElementById("success-msg").innerText = "Bienvenue " + prenom + " !";
