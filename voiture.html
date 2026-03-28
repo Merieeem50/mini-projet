@@ -151,7 +151,7 @@ const voitures = [
   {
     nom: "Mercedes Benz 2024",
     prix: "400 DH/jour",
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600",
+    image: "./img/mercedes.png",
     boite: "Automatique",
     carburant: "Diesel",
     places: "5",
@@ -161,7 +161,7 @@ const voitures = [
   {
     nom: "Toyota Yaris 2024",
     prix: "150 DH/jour",
-    image: "https://images.unsplash.com/photo-1583267746897-2cf415887172?w=600",
+    image: "./img/toyota.png",
     boite: "Manuelle",
     carburant: "Essence",
     places: "5",
@@ -171,7 +171,7 @@ const voitures = [
   {
     nom: "BMW Série 3 2024",
     prix: "300 DH/jour",
-    image: "https://unsplash.com/photos/a-black-car-parked-on-the-side-of-a-road-Hcg0hqn4SbU",
+    image: "./img/BMW.png",
     boite: "Automatique",
     carburant: "Diesel",
     places: "5",
@@ -181,7 +181,7 @@ const voitures = [
   {
     nom: "Dacia Logan 2024",
     prix: "100 DH/jour",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600",
+    image: "./img/dacia.png",
     boite: "Manuelle",
     carburant: "Essence",
     places: "5",
@@ -191,7 +191,7 @@ const voitures = [
   {
     nom: "Renault Clio 2024",
     prix: "150 DH/jour",
-    image: "https://images.unsplash.com/photo-1549921296-3ecf9c2f1f1c?w=600",
+    image: "./img/renault.png",
     boite: "Manuelle",
     carburant: "Diesel",
     places: "5",
@@ -201,7 +201,7 @@ const voitures = [
   {
     nom: "Hyundai Tucson 2024",
     prix: "200 DH/jour",
-    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6d9?w=600",
+    image: "./img/hyunday.png",
     boite: "Automatique",
     carburant: "Hybride",
     places: "5",
@@ -233,7 +233,7 @@ voitures.forEach(v => {
 
 
 function goDetail(v){
-  localStorage.setItem("voitures", JSON.stringify(v));
+  localStorage.setItem("voiture", JSON.stringify(v));
   window.location.href = "details.html";
 }
 

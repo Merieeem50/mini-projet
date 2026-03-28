@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Contact</title>
 
-<!-- نفس CSS -->
+
 <link rel="stylesheet" href="./css/style.css">
 
 <style>
@@ -48,7 +48,7 @@ button:hover {
 
 <body>
 
-<!-- NAVBAR -->
+
 <nav class="navbar">
   <div class="nav-logo">
     <img src="./img/logo.png" style="height: 55px;">
@@ -58,22 +58,22 @@ button:hover {
   </div>
 
   <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html" class="active">Accueil</a></li>
     <li><a href="voiture.html">Voitures</a></li>
-    <li><a href="reservation.html">Reserver</a></li>
-    <li><a href="apropos.html">a propos</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="reservation.html">Réserver</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<!-- FORMULAIRE -->
+
 <div class="contact-container">
 
   <h2>Contactez-nous</h2>
 
   <input type="text" id="nom" placeholder="Votre nom" required>
 
-  <!-- ✅ email مع validation -->
+  
   <input type="email" id="email" placeholder="Votre email" required>
 
   <textarea id="message" rows="5" placeholder="Votre message"></textarea>
@@ -82,14 +82,14 @@ button:hover {
 
 </div>
 
-<!-- JAVASCRIPT -->
+
 <script>
 function envoyer(){
 
   const nom = document.getElementById("nom").value;
   const email = document.getElementById("email").value;
 
-  /* regex email */
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if(nom === ""){
