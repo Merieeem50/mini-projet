@@ -1,257 +1,183 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Réserver — SiyaraGo</title>
-  <link rel="stylesheet" href="./css/reservation.css">
-  <link rel="stylesheet" href="./css/style.css">
-  
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Réserver</title>
+<link rel="stylesheet" href="./css/style.css"> 
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
+<style>
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+}
+
+.container {
+  width: 400px;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #5E1E2B;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+  <nav class="navbar">
   <div class="nav-logo">
     <img src="./img/logo.png" alt="Logo" style="height: 55px;">
-    <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
+    <span class="nav-brand">
+      SiyaraGo<span class="nav-brand-ext">.ma</span>
+    </span>
   </div>
+
   <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="voitures.html">Voitures</a></li>
-    <li><a href="reservation.html" class="active">Réserver</a></li>
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="voiture.html">Voitures</a></li>
+    <li><a href="reservation.html">Réserver</a></li>
     <li><a href="apropos.html">À propos</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+
   <div class="nav-buttons">
-    <button class="btn-outline">S'inscrire</button>
-    <button class="btn-solid">Connexion</button>
+    <button class="btn-sinscrire"><a href="inscription.html">s'inscrire</a></button>
+    <button class="btn-connexion">Connexion</button>
   </div>
 </nav>
 
-<!-- ===== RESERVATION ===== -->
-<div class="reservation">
+<div class="container">
 
-  <!-- FORMULAIRE -->
-  <div class="form-box">
-    <h2>🚗 Réserver une voiture</h2>
+<h2>Réserver une voiture</h2>
 
-    <!-- Voiture -->
-    <div class="form-group">
-      <label>Choisir une voiture</label>
-      <select id="voiture" onchange="updatePrix()">
-        <option value="900"  data-nom="Mercedes Benz 2024">Mercedes Benz 2024 — 900 DH/jour</option>
-        <option value="350"  data-nom="Toyota Yaris 2024">Toyota Yaris 2024 — 350 DH/jour</option>
-        <option value="600"  data-nom="BMW Série 3 2024">BMW Série 3 2024 — 600 DH/jour</option>
-        <option value="250"  data-nom="Dacia Logan 2024">Dacia Logan 2024 — 250 DH/jour</option>
-        <option value="300"  data-nom="Renault Clio 2024">Renault Clio 2024 — 300 DH/jour</option>
-        <option value="500"  data-nom="Hyundai Tucson 2024">Hyundai Tucson 2024 — 500 DH/jour</option>
-      </select>
-      <p class="prix-jour" id="prixJour">💰 900 DH / jour</p>
-    </div>
+<label>Choisir une voiture</label>
+<select id="voiture">
+  <option value="900">Mercedes Benz 2024 - 900 DH/jour</option>
+  <option value="350">Toyota Yaris 2024 - 350 DH/jour</option>
+  <option value="600">BMW Série 3 2024 - 600 DH/jour</option>
+  <option value="250">Dacia Logan 2024 - 250 DH/jour</option>
+  <option value="300">Renault Clio 2024 - 300 DH/jour</option>
+  <option value="500">Hyundai Tucson 2024 - 500 DH/jour</option>
+</select>
 
-    <!-- Ville -->
-    <div class="form-group">
-      <label>Ville de départ</label>
-      <select id="ville" onchange="updateSummary()">
-        <option value="">-- Choisir une ville --</option>
-        <option>Casablanca</option>
-        <option>Rabat</option>
-        <option>Marrakech</option>
-        <option>Agadir</option>
-        <option>Fès</option>
-        <option>Tanger</option>
-      </select>
-    </div>
+<p id="prixJour">Prix : 900 DH / jour</p>
 
-    <!-- Téléphone -->
-    <div class="form-group">
-      <label>Numéro de téléphone</label>
-      <input type="tel" id="telephone"
-        placeholder="Ex: 06XXXXXXXX"
-        oninput="updateSummary()">
-    </div>
+<label>Ville de départ</label>
+<select id="ville">
+  <option value="">-- Choisir une ville --</option>
+  <option>Casablanca</option>
+  <option>Rabat</option>
+  <option>Marrakech</option>
+  <option>Agadir</option>
+</select>
 
-    <!-- Dates -->
-    <div class="dates-row">
-      <div class="form-group">
-        <label>Date de début</label>
-        <input type="date" id="debut" onchange="onDebutChange()">
-      </div>
-      <div class="form-group">
-        <label>Date de fin</label>
-        <input type="date" id="fin" onchange="calculer()">
-      </div>
-    </div>
+<label>Numéro de téléphone</label>
+<input type="tel" id="telephone" placeholder="Ex: 06XXXXXXXX">
 
-    <!-- Total -->
-    <div class="total-box">
-      <h3>Prix total : <span id="total">0</span> DH</h3>
-      <p id="detail">Remplissez les dates pour calculer</p>
-    </div>
+<label>Date de début</label>
+<input type="date" id="debut">
 
-    <!-- Boutons -->
-    <button class="btn-calculer" onclick="calculer()">
-      🧮 Calculer le prix
-    </button>
-    <button class="btn-confirmer" onclick="confirmer()">
-      ✅ Confirmer la réservation
-    </button>
+<label>Date de fin</label>
+<input type="date" id="fin">
 
-  </div>
+<h3>Prix total : <span id="total">0</span> DH</h3>
 
-  <!-- RÉSUMÉ -->
-  <div class="summary-box">
-    <h3>📋 Résumé</h3>
-    <div class="summary-item">
-      <span>Voiture</span>
-      <span id="s-voiture">—</span>
-    </div>
-    <div class="summary-item">
-      <span>Ville</span>
-      <span id="s-ville">—</span>
-    </div>
-    <div class="summary-item">
-      <span>Téléphone</span>
-      <span id="s-tel">—</span>
-    </div>
-    <div class="summary-item">
-      <span>Date début</span>
-      <span id="s-debut">—</span>
-    </div>
-    <div class="summary-item">
-      <span>Date fin</span>
-      <span id="s-fin">—</span>
-    </div>
-    <div class="summary-item">
-      <span>Durée</span>
-      <span id="s-jours">—</span>
-    </div>
-    <div class="summary-total" id="s-total">0 DH</div>
-  </div>
+<button onclick="calculer()">Calculer le prix</button>
+<button onclick="confirmer()">Confirmer la réservation</button>
 
 </div>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <p>© 2024 SiyaraGo — Projet fictif</p>
-</footer>
-
 <script>
-// ===== INIT =====
+
+
 let today = new Date().toISOString().split("T")[0];
 document.getElementById("debut").min = today;
-document.getElementById("fin").min   = today;
-updatePrix();
+document.getElementById("fin").min = today;
 
-// ===== PRIX JOUR =====
-function updatePrix() {
-  let sel  = document.getElementById("voiture");
-  let prix = sel.value;
-  document.getElementById("prixJour").innerText = "💰 " + prix + " DH / jour";
+document.getElementById("voiture").addEventListener("change", function(){
+  document.getElementById("prixJour").innerText =
+    "Prix : " + this.value + " DH / jour";
+});
 
-  // Mise à jour résumé voiture
-  let nom = sel.options[sel.selectedIndex].getAttribute("data-nom");
-  document.getElementById("s-voiture").innerText = nom;
 
-  // Recalcule si dates déjà remplies
+function calculer(){
+
+  let prix = parseInt(document.getElementById("voiture").value);
   let debut = document.getElementById("debut").value;
-  let fin   = document.getElementById("fin").value;
-  if (debut && fin) calculer();
-}
+  let fin = document.getElementById("fin").value;
 
-// ===== DATE DÉBUT =====
-function onDebutChange() {
-  let debut = document.getElementById("debut").value;
-  document.getElementById("fin").min = debut;
-  document.getElementById("fin").value = "";
-  document.getElementById("total").innerText = "0";
-  document.getElementById("detail").innerText = "Choisissez la date de fin";
-  document.getElementById("s-debut").innerText = debut || "—";
-  document.getElementById("s-fin").innerText   = "—";
-  document.getElementById("s-jours").innerText = "—";
-  document.getElementById("s-total").innerText = "0 DH";
-}
-
-// ===== MISE À JOUR RÉSUMÉ =====
-function updateSummary() {
-  let ville = document.getElementById("ville").value;
-  let tel   = document.getElementById("telephone").value;
-  document.getElementById("s-ville").innerText = ville || "—";
-  document.getElementById("s-tel").innerText   = tel   || "—";
-}
-
-// ===== CALCUL =====
-function calculer() {
-  let prixJour = parseInt(document.getElementById("voiture").value);
-  let debut    = document.getElementById("debut").value;
-  let fin      = document.getElementById("fin").value;
-
-  if (!debut || !fin) return;
-
-  let date1 = new Date(debut);
-  let date2 = new Date(fin);
-  date1.setHours(0, 0, 0, 0);
-  date2.setHours(0, 0, 0, 0);
-
-  if (date2 <= date1) {
-    alert("La date de fin doit être après la date de début !");
-    document.getElementById("fin").value = "";
+  if(!debut || !fin){
+    alert("Veuillez remplir les dates !");
     return;
   }
 
-  let jours = (date2 - date1) / (1000 * 60 * 60 * 24);
-  let total = jours * prixJour;
+  
+  let date1 = new Date(debut);
+  let date2 = new Date(fin);
 
-  // Formulaire
-  document.getElementById("total").innerText  = total;
-  document.getElementById("detail").innerText =
-    jours + " jour(s) × " + prixJour + " DH = " + total + " DH";
+  
+  date1.setHours(0,0,0,0);
+  date2.setHours(0,0,0,0);
 
-  // Résumé
-  document.getElementById("s-debut").innerText = debut;
-  document.getElementById("s-fin").innerText   = fin;
-  document.getElementById("s-jours").innerText = jours + " jour(s)";
-  document.getElementById("s-total").innerText = total + " DH";
+  if(date2 <= date1){
+    alert("La date de fin doit être après la date de début !");
+    return;
+  }
+
+
+  let diff = (date2 - date1) / (1000 * 60 * 60 * 24);
+
+  let total = diff * prix;
+
+  document.getElementById("total").innerText = total;
 }
 
-// ===== CONFIRMATION =====
-function confirmer() {
-  let sel        = document.getElementById("voiture");
-  let nomVoiture = sel.options[sel.selectedIndex].getAttribute("data-nom");
-  let ville      = document.getElementById("ville").value;
-  let tel        = document.getElementById("telephone").value;
-  let debut      = document.getElementById("debut").value;
-  let fin        = document.getElementById("fin").value;
-  let total      = document.getElementById("total").innerText;
 
-  // Validations
-  if (!ville) {
-    alert("Veuillez choisir une ville !"); return;
-  }
-  if (!tel) {
-    alert("Veuillez entrer votre numéro !"); return;
-  }
-  if (!/^0[5-7][0-9]{8}$/.test(tel)) {
-    alert("Numéro de téléphone invalide !"); return;
-  }
-  if (!debut || !fin) {
-    alert("Veuillez remplir les dates !"); return;
-  }
-  if (total == "0") {
-    alert("Veuillez calculer le prix !"); return;
+function confirmer(){
+
+  let ville = document.getElementById("ville").value;
+  let tel = document.getElementById("telephone").value;
+  let debut = document.getElementById("debut").value;
+  let fin = document.getElementById("fin").value;
+  let total = document.getElementById("total").innerText;
+
+  if(ville === "" || tel === "" || debut === "" || fin === ""){
+    alert("Veuillez remplir toutes les informations !");
+    return;
   }
 
-  alert(
-    "✅ Réservation enregistrée !\n\n" +
-    "🚗 Voiture  : " + nomVoiture + "\n" +
-    "📍 Ville    : " + ville      + "\n" +
-    "📞 Tél      : " + tel        + "\n" +
-    "📅 Du       : " + debut      + "\n" +
-    "📅 Au       : " + fin        + "\n" +
-    "💰 Total    : " + total      + " DH\n\n" +
-    "Nous vous contacterons au " + tel + " pour confirmer."
-  );
+  if(!/^0[5-7][0-9]{8}$/.test(tel)){
+    alert("Numéro de téléphone invalide !");
+    return;
+  }
+
+  if(total == 0){
+    alert("Veuillez calculer le prix !");
+    return;
+  }
+
+  alert("✅ Votre réservation est enregistrée ! Merci pour votre confience 🥰");
 }
+
 </script>
 
 </body>
