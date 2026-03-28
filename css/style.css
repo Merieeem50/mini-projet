@@ -1,4 +1,4 @@
-/* ===== PALETTE ===== */
+
 :root {
   --oxblood:  #5E1E2B;
   --raw-oak:  #D2BCA8;
@@ -18,7 +18,7 @@ body {
   flex-direction: column;
 }
 
-/* --- NAVBAR --- */
+
 .navbar {
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@ body {
   border-bottom: 3px solid var(--oxblood);
   box-shadow: 0 4px 20px rgba(94, 30, 43, 0.4);
   position: sticky;
-  top: 0;
+  top: 10px;
   z-index: 1000;
   border-radius: 20px;
 }
@@ -96,7 +96,7 @@ body {
 
 .nav-buttons { display: flex; gap: 10px; }
 
-.btn-outline {
+.btn-connexion {
   background: transparent;
   border: 2px solid var(--oxblood);
   color: var(--oxblood);
@@ -108,7 +108,7 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.btn-s'inscrire:hover {
+.btn-sinscrire:hover {
   background-color: var(--oxblood);
   color: var(--plaster);
 }
@@ -130,15 +130,15 @@ body {
   box-shadow: 0 0 12px rgba(94, 30, 43, 0.6);
 }
 
-/* --- HERO --- */
+
 .hero {
-  display: flex;              /* ✅ flex au lieu de inline-block */
+  display: flex;             
   align-items: center;
   justify-content: space-between;
   padding: 60px 150px;
   gap: 40px;
   flex-wrap: wrap;
-  min-height: 70vh;           /* ✅ donne de la hauteur */
+  min-height: 70vh;           
 }
 
 .hero-text {
@@ -186,7 +186,7 @@ font-size: 75px;
 }
 
 .hero-img {
-  flex: 1;                    /* ✅ prend l'espace disponible */
+  flex: 1;                    
   min-width: 280px;
   max-width: 600px;
   border-radius: 12px;
@@ -197,9 +197,9 @@ font-size: 75px;
 .hero-img img {
   width: 95%;
   border-radius: 5px;
-  box-shadow: 0 8px 30px rgba(94, 30, 43, 0.2); /* ✅ ombre élégante */
+  box-shadow: 0 8px 30px rgba(94, 30, 43, 0.2);
 }
-/* --- STEPS --- */
+
 .steps {
   text-align: center;
   padding: 80px 40px;
@@ -225,9 +225,9 @@ font-size: 75px;
 .steps-row {
   display: flex;
   justify-content: center;
-  gap: 30px;               /* ✅ plus d'espace entre les cartes */
+  gap: 30px;               
   flex-wrap: wrap;
-  max-width: 1100px;       /* ✅ limite la largeur max */
+  max-width: 1100px;      
   margin: 0 auto;
 }
 
@@ -237,7 +237,7 @@ font-size: 75px;
     var(--plaster) 100%);
   border-radius: 12px;
   padding: 40px 30px;
-  width: 100%;          /* ✅ chaque carte prend sa colonne */
+  width: 100%;          
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -245,7 +245,7 @@ font-size: 75px;
 .step h3 { color: var(--oxblood); margin-bottom: 8px; font-size: 30px; font-family: Arial, Helvetica, sans-serif; }
 .step p { color: var(--obsidian); font-size: 20px; line-height: 1.5; font-family: 'Times New Roman', Times, serif; font-weight: bold; }
 
-/* --- VOITURES --- */
+
 .cars { padding: 60px 40px; text-align: center; }
 
 .cars h2 { font-size: 25px; margin: 8px 0 35px; color: var(--oxblood); font-family: 'Times New Roman', Times, serif ; }
@@ -346,7 +346,7 @@ font-size: 75px;
   color: var(--plaster);
 }
 
-/* --- FOOTER --- */
+
 footer {
   background: linear-gradient(135deg,
     var(--obsidian) 0%,
@@ -354,7 +354,7 @@ footer {
   color: var(--plaster);
   text-align: center;
   padding: 25px;
-  margin-top: auto;  /* ✅ colle le footer en bas */
+  margin-top: auto;  
   width: 100%;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
