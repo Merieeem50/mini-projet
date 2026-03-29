@@ -108,18 +108,23 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.btn-sinscrire a {   
+.btn-sinscrire {   
+  background: transparent;
   color: var(--oxblood);                
   font-size: 16px;             
   padding: 10px 20px;         
   border: 2px solid var(--oxblood);               
   border-radius: 25px;          
   cursor: pointer;            
-  transition: background-color 0.3s ease; 
-  text-decoration: none; 
-  border: none;          
+  transition: background-color 0.3s ease;           
   outline: none;        
   font-weight: bold;       
+}
+
+.btn-sinscrire a {
+  color: var(--oxblood);
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .btn-sinscrire :hover {
