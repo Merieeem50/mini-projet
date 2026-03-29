@@ -7,19 +7,113 @@
 
 
 <style>
-body { font-family: Arial; background: #eee; }
-
-.card {
-  width: 600px;
-  margin: 50px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+:root {
+  --primary:   #0D0D0D;
+  --accent:    #C9A84C;
+  --light:     #F7F5F0;
+  --mid:       #6B6B6B;
+  --dark:      #1A1A1A;
 }
 
-img { width: 100%; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.spec { margin: 8px 0; }
+.card {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  background: var(--dark);
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(201, 168, 76, 0.3);
+  border-color: var(--accent);
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  border-bottom: 3px solid var(--accent);
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--light);
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.card-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+.spec {
+  margin: 8px 0;
+  color: var(--mid);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec span {
+  color: var(--light);
+  font-weight: bold;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.card button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+  background: var(--accent);
+  color: var(--dark);
+  border: none;
+  border-radius: 25px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.card button:hover {
+  background: #b8902e;
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
+}
 </style>
 </head>
 
@@ -36,10 +130,7 @@ img { width: 100%; }
     <li><a href="apropos.html">À propos</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="nav-buttons">
-    <button class="btn-sincrire" onclick="window.location.href='inscription.html'">S'inscrire</button>
-    <button class="btn-connexion"   onclick="window.location.href='connexion.html'">Connexion</button>
-  </div>
+  
 </nav>
 
 <div class="card">
@@ -52,6 +143,8 @@ img { width: 100%; }
   <div class="spec">👥 Places: <span id="places"></span></div>
   <div class="spec">🧳 Coffre: <span id="coffre"></span></div>
   <div class="spec">💪 Puissance: <span id="puissance"></span></div>
+  <div class="badge">Disponible</div>
+  <button onclick="window.location.href='reservation.html'">Réserver maintenant</button>
 </div>
 
 <script>
