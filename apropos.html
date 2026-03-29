@@ -1,132 +1,246 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>À propos</title>
-<link rel="stylesheet" href="./css/apropos.css">
-<link rel="stylesheet" href="./css/style.css">
-<style>
-  :root {
-  --oxblood:  #5E1E2B;
-  --raw-oak:  #D2BCA8;
-  --plaster:  #DADCDD;
-  --concrete: #9C9D9B;
-  --obsidian: #202020;
-}
-  .about-container {
-    max-width: 800px;
-    margin: 50px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  }
+  <meta charset="UTF-8">
+  <title>À propos — SiyaraGo</title>
+  <style>
+    :root {
+      --primary: #0D0D0D;
+      --accent:  #C9A84C;
+      --light:   #F7F5F0;
+      --mid:     #6B6B6B;
+      --dark:    #1A1A1A;
+    }
 
-  .about-container h2 {
-    text-align: center;
-    color: var(--oxblood);
-    margin-bottom: 20px;
-  }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  .about-container p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--obsidian);
-    margin-bottom: 20px;
-  }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  .features {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-  }
+    /* ── NAVBAR ── */
+    .navbar {
+      width: calc(100% - 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+      background-color: var(--dark);
+      padding: 20px 40px;
+      margin: 20px;
+      border-bottom: 3px solid var(--accent);
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+      position: sticky;
+      top: 10px;
+      z-index: 1000;
+      border-radius: 20px;
+    }
 
-  .feature {
-    text-align: center;
-    max-width: 200px;
-    padding: 20px 20px;
-    background: white;
-    box-shadow: 0 4px 14px #0000007d;
-    width: 120%;
-  }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
 
-  .feature h3 {
-    color: var(--oxblood);
-    margin-bottom: 10px;
-  }
+    .nav-brand {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--light);
+      font-family: 'Segoe UI', sans-serif;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
 
-  .feature p {
-    color: var(--obsidian);
-    font-size: 16px;
-      line-height: 1.4;
+    .nav-brand-ext {
+      color: var(--accent);
+      font-size: 16px;
+    }
 
-  }
-</style>
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      flex-shrink: 0;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 500;
+      padding: 7px 0;
+      position: relative;
+      transition: color 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+      white-space: nowrap;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    /* ── ABOUT CONTAINER ── */
+    .about-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto 50px;
+      background: var(--dark);
+      padding: 40px 35px;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.15);
+    }
+
+    .about-container h2 {
+      text-align: center;
+      color: var(--accent);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 32px;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    .about-container p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 18px;
+    }
+
+    .about-container p strong {
+      color: var(--light);
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      text-align: center;
+      flex: 1;
+      min-width: 150px;
+      max-width: 200px;
+      padding: 25px 20px;
+      background: #222;
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(201, 168, 76, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(201, 168, 76, 0.25);
+      border-color: var(--accent);
+    }
+
+    .feature h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .feature p {
+      color: var(--mid);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px 20px;
+        margin: 10px;
+        width: calc(100% - 20px);
+      }
+      .nav-links { gap: 15px; flex-wrap: wrap; }
+      .about-container { margin: 20px 15px 40px; padding: 25px 20px; }
+      .features { flex-direction: column; align-items: center; }
+      .feature { max-width: 100%; width: 100%; }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <nav class="navbar">
+    <div class="nav-logo">
+      <img src="./img/new logo.png" alt="Logo SiyaraGo" style="height: 50px;">
+      <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="voiture.html">Voitures</a></li>
+      <li><a href="reservation.html">Réserver</a></li>
+      <li><a href="apropos.html" class="active">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<nav class="navbar">
-  <div class="nav-logo">
-    <img src="./img/new logo.png" style="height: 55px;">
-    <span class="nav-brand">
-      SiyaraGo<span class="nav-brand-ext">.ma</span>
-    </span>
+  <div class="about-container">
+    <h2>À propos de SiyaraGo</h2>
+
+    <p>
+      <strong>SiyaraGo</strong> est une plateforme de location de voitures au Maroc.
+      Nous proposons différents types de véhicules adaptés à tous les besoins,
+      que ce soit pour un voyage, un déplacement professionnel ou une occasion spéciale.
+    </p>
+
+    <p>
+      Notre objectif est de rendre la location de voiture <strong>simple,
+      rapide et accessible à tous</strong>, partout au Maroc.
+    </p>
+
+    <p>
+      Grâce à notre site, vous pouvez choisir votre voiture,
+      réserver facilement et profiter d'un service de qualité
+      avec des prix transparents et sans surprises.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>🚗 Large choix</h3>
+        <p>Plusieurs voitures disponibles pour tous les budgets</p>
+      </div>
+      <div class="feature">
+        <h3>💰 Prix abordables</h3>
+        <p>Des tarifs accessibles et transparents</p>
+      </div>
+      <div class="feature">
+        <h3>⚡ Service rapide</h3>
+        <p>Réservation confirmée en quelques clics</p>
+      </div>
+    </div>
   </div>
-
-  <ul class="nav-links">
-    
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="voiture.html">Voitures</a></li>
-    <li><a href="reservation.html">Réserver</a></li>
-    <li><a href="about.html" class="active">À propos</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-
-<div class="about-container">
-
-  <h2>À propos de SiyaraGo</h2>
-
-  <p>
-    SiyaraGo est une plateforme de location de voitures au Maroc.
-    Nous proposons différents types de véhicules adaptés à tous les besoins.
-  </p>
-
-  <p>
-    Notre objectif est de rendre la location de voiture simple,
-    rapide et accessible à tous.
-  </p>
-
-  <p>
-    Grâce à notre site, vous pouvez choisir votre voiture,
-    réserver facilement et profiter d’un service de qualité.
-  </p>
-
-  
-  <div class="features">
-
-    <div class="feature">
-      <h3>🚗 Large choix</h3>
-      <p>Plusieurs voitures disponibles</p>
-    </div>
-
-    <div class="feature">
-      <h3>💰 Prix abordables</h3>
-      <p>Des prix accessibles à tous</p>
-    </div>
-
-    <div class="feature">
-      <h3>⚡ Service rapide</h3>
-      <p>Réservation en quelques clics</p>
-    </div>
-
-  </div>
-
-</div>
 
 </body>
 </html>
