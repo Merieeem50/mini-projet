@@ -1,166 +1,274 @@
 <!DOCTYPE html>
-<html id="details">
+<html lang="fr" id="details">
 <head>
-<meta charset="UTF-8">
-<title>Détail</title>
-<link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <title>Détail — SiyaraGo</title>
+  <style>
+    :root {
+      --primary: #0D0D0D;
+      --accent:  #C9A84C;
+      --light:   #F7F5F0;
+      --mid:     #6B6B6B;
+      --dark:    #1A1A1A;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-:root {
-  --primary:   #0D0D0D;
-  --accent:    #C9A84C;
-  --light:     #F7F5F0;
-  --mid:       #6B6B6B;
-  --dark:      #1A1A1A;
-}
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--primary);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* ── NAVBAR ── */
+    .navbar {
+      width: calc(100% - 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+      background-color: var(--dark);
+      padding: 20px 40px;
+      margin: 20px;
+      border-bottom: 3px solid var(--accent);
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+      position: sticky;
+      top: 10px;
+      z-index: 1000;
+      border-radius: 20px;
+    }
 
-.card {
-  width: 100%;
-  max-width: 600px;
-  margin: 50px auto;
-  background: var(--dark);
-  padding: 25px;
-  border-radius: 16px;
-  border: 1px solid rgba(201, 168, 76, 0.3);
-  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 35px rgba(201, 168, 76, 0.3);
-  border-color: var(--accent);
-}
+    .nav-brand {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--light);
+      font-family: 'Segoe UI', sans-serif;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
 
-.card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 10px;
-  border-bottom: 3px solid var(--accent);
-  margin-bottom: 20px;
-}
+    .nav-brand-ext {
+      color: var(--accent);
+      font-size: 16px;
+    }
 
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--light);
-  font-family: 'Segoe UI', sans-serif;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
-}
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      flex-shrink: 0;
+    }
 
-.card-price {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--accent);
-  margin-bottom: 15px;
-}
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 500;
+      padding: 7px 0;
+      position: relative;
+      transition: color 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+      white-space: nowrap;
+    }
 
-.spec {
-  margin: 8px 0;
-  color: var(--mid);
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
 
-.spec span {
-  color: var(--light);
-  font-weight: bold;
-}
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
 
-.badge {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--dark);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: bold;
-  margin: 12px 0;
-}
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 900;
+    }
 
-.card button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 18px;
-  background: var(--accent);
-  color: var(--dark);
-  border: none;
-  border-radius: 25px;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-  font-family: 'Times New Roman', Times, serif;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  letter-spacing: 0.5px;
-}
+    /* ── CARD ── */
+    .card {
+      width: 100%;
+      max-width: 600px;
+      margin: 30px auto 50px;
+      background: var(--dark);
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.card button:hover {
-  background: #b8902e;
-  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
-}
-</style>
+    /* ✅ Correction : .card:hover */
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 35px rgba(201, 168, 76, 0.3);
+      border-color: var(--accent);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--light);
+      font-family: 'Segoe UI', sans-serif;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    #nom {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--light);
+      font-family: 'Segoe UI', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    #prix {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .spec {
+      margin: 8px 0;
+      color: var(--mid);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spec span {
+      color: var(--light);
+      font-weight: bold;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 18px;
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      border-radius: 25px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    /* ✅ Correction : .card button:hover */
+    .card button:hover {
+      background: #b8902e;
+      box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px 20px;
+        margin: 10px;
+        width: calc(100% - 20px);
+      }
+      .nav-links { gap: 15px; flex-wrap: wrap; }
+      .card { margin: 20px 15px 40px; }
+    }
+  </style>
 </head>
 
 <body>
+
   <nav class="navbar">
-  <div class="nav-logo">
-    <img src="./img/logo.png" alt="Logo" style="height: 55px;">
-    <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
+    <div class="nav-logo">
+      <img src="./img/new logo.png" alt="Logo" style="height: 50px;">
+      <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="voiture.html" class="active">Voitures</a></li>
+      <li><a href="reservation.html">Réserver</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="card">
+    <img id="image" alt="Photo de la voiture">
+    <h2 id="nom"></h2>
+    <p id="prix"></p>
+
+    <div class="spec">⚙️ Boîte : <span id="boite"></span></div>
+    <div class="spec">⛽ Carburant : <span id="carburant"></span></div>
+    <div class="spec">👥 Places : <span id="places"></span></div>
+    <div class="spec">🧳 Coffre : <span id="coffre"></span></div>
+    <div class="spec">💪 Puissance : <span id="puissance"></span></div>
+
+    <div class="badge">✅ Disponible</div>
+
+    <button onclick="window.location.href='reservation.html'">
+      Réserver maintenant
+    </button>
   </div>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="voiture.html">Voitures</a></li>
-    <li><a href="reservation.html">Réserver</a></li>
-    <li><a href="apropos.html">À propos</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  
-</nav>
 
-<div class="card">
-  <img id="image">
-  <h2 id="nom"></h2>
-  <p id="prix"></p>
+  <script>
+    // ✅ Correction : guillemets autour de 'voiture'
+    const voiture = JSON.parse(localStorage.getItem('voiture'));
 
-  <div class="spec">⚙️ Boîte: <span id="boite"></span></div>
-  <div class="spec">⛽ Carburant: <span id="carburant"></span></div>
-  <div class="spec">👥 Places: <span id="places"></span></div>
-  <div class="spec">🧳 Coffre: <span id="coffre"></span></div>
-  <div class="spec">💪 Puissance: <span id="puissance"></span></div>
-  <div class="badge">Disponible</div>
-  <button onclick="window.location.href='reservation.html'">Réserver maintenant</button>
-</div>
-
-<script>
-
-const voiture = JSON.parse(localStorage.getItem("voiture"));
-
-document.getElementById("nom").innerText = voiture.nom;
-document.getElementById("prix").innerText = voiture.prix;
-document.getElementById("image").src = voiture.image;
-
-document.getElementById("boite").innerText = voiture.boite;
-document.getElementById("carburant").innerText = voiture.carburant;
-document.getElementById("places").innerText = voiture.places;
-document.getElementById("coffre").innerText = voiture.coffre;
-document.getElementById("puissance").innerText = voiture.puissance;
-</script>
+    if(voiture) {
+      // ✅ Correction : guillemets autour de tous les ids
+      document.getElementById('nom').innerText       = voiture.nom;
+      document.getElementById('prix').innerText      = voiture.prix + " DH/jour";
+      document.getElementById('image').src           = voiture.image;
+      document.getElementById('image').alt           = voiture.nom;
+      document.getElementById('boite').innerText     = voiture.boite;
+      document.getElementById('carburant').innerText = voiture.carburant;
+      document.getElementById('places').innerText    = voiture.places;
+      document.getElementById('coffre').innerText    = voiture.coffre;
+      document.getElementById('puissance').innerText = voiture.puissance;
+    } else {
+      document.querySelector('.card').innerHTML =
+        '<p style="color:var(--accent);text-align:center;padding:40px;">Aucune voiture sélectionnée.<br><a href="voiture.html" style="color:var(--accent);">← Retour aux voitures</a></p>';
+    }
+  </script>
 
 </body>
 </html>
