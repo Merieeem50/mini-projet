@@ -2,35 +2,165 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Réserver</title>
-<link rel="stylesheet" href="./css/style.css"> 
-
+<title>Réserver — SiyaraGo</title>
 <style>
 :root {
-  --primary:   #0D0D0D;
-  --accent:    #C9A84C;
-  --light:     #F7F5F0;
-  --mid:       #6B6B6B;
-  --dark:      #1A1A1A;
+  --primary: #0D0D0D;
+  --accent:  #C9A84C;
+  --light:   #F7F5F0;
+  --mid:     #6B6B6B;
+  --dark:    #1A1A1A;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* ← مهم جداً */
-}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: var(--primary);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
+/* ── NAVBAR ── */
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  background-color: var(--dark);
+  padding: 20px 40px;
+  margin: 20px;
+  border-bottom: 3px solid var(--accent);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  border-radius: 20px;
+  width: calc(100% - 40px);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.nav-brand {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--light);
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.nav-brand-ext {
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  flex-shrink: 0;
+}
+
+.nav-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 7px 0;
+  position: relative;
+  transition: color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  white-space: nowrap;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ✅ Fix : boutons navbar isolés du style button global */
+.btn-sinscrire {
+  background: transparent;
+  color: var(--accent);
+  font-size: 15px;
+  padding: 9px 20px;
+  border: 2px solid var(--accent);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  transition: all 0.3s ease;
+  width: auto;
+  margin-top: 0;
+}
+
+.btn-sinscrire a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.btn-sinscrire:hover {
+  background: var(--accent);
+  color: var(--dark);
+}
+
+.btn-sinscrire:hover a { color: var(--dark); }
+
+.btn-connexion {
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 15px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  transition: all 0.3s ease;
+  width: auto;
+  margin-top: 0;
+}
+
+.btn-connexion:hover {
+  background: #b8902e;
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
+}
+
+/* ── FORM CONTAINER ── */
 .container {
   width: 100%;
-  max-width: 450px;
-  margin: 50px auto;
+  max-width: 480px;
+  margin: 30px auto 50px;
   background: var(--dark);
   padding: 35px 30px;
   border-radius: 16px;
@@ -42,9 +172,24 @@ h2 {
   text-align: center;
   color: var(--accent);
   font-family: 'Times New Roman', Times, serif;
-  font-size: 28px;
+  font-size: 26px;
   margin-bottom: 25px;
   letter-spacing: 1px;
+}
+
+/* ✅ Fix h3 */
+h3 {
+  color: var(--light);
+  text-align: center;
+  margin: 18px 0 5px;
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h3 span {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: bold;
 }
 
 label {
@@ -59,7 +204,7 @@ label {
 input, select {
   width: 100%;
   padding: 12px 15px;
-  margin: 6px 0 16px;
+  margin: 5px 0 15px;
   background: #2a2a2a;
   border: 1px solid rgba(201, 168, 76, 0.3);
   border-radius: 8px;
@@ -81,10 +226,20 @@ select option {
   color: var(--light);
 }
 
-button {
+/* ✅ Fix prixJour */
+#prixJour {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 15px;
+  margin: -8px 0 14px;
+  padding-left: 4px;
+}
+
+/* ✅ Boutons du formulaire uniquement */
+.container button {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
+  margin-top: 12px;
   background: var(--accent);
   color: var(--dark);
   border: none;
@@ -97,107 +252,111 @@ button {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
+.container button:hover {
   background: #b8902e;
   box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
 }
-</style>
 
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 15px 20px;
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+  .nav-links { gap: 15px; flex-wrap: wrap; }
+  .container { margin: 20px 15px 40px; padding: 25px 20px; }
+}
+</style>
 </head>
 
 <body>
-  <nav class="navbar">
+
+<nav class="navbar">
   <div class="nav-logo">
-    <img src="./img/logo.png" alt="Logo" style="height: 55px;">
-    <span class="nav-brand">
-      SiyaraGo<span class="nav-brand-ext">.ma</span>
-    </span>
+    <img src="./img/logo.png" alt="Logo" style="height:50px;">
+    <span class="nav-brand">SiyaraGo<span class="nav-brand-ext">.ma</span></span>
   </div>
 
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="index.html">Accueil</a></li>
     <li><a href="voiture.html">Voitures</a></li>
-    <li><a href="reservation.html">Réserver</a></li>
+    <li><a href="reservation.html" class="active">Réserver</a></li>
     <li><a href="apropos.html">À propos</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 
   <div class="nav-buttons">
-    <button class="btn-sinscrire"><a href="inscription.html">s'inscrire</a></button>
+    <button class="btn-sinscrire"><a href="inscription.html">S'inscrire</a></button>
     <button class="btn-connexion">Connexion</button>
   </div>
 </nav>
 
 <div class="container">
+  <h2>🚗 Réserver une voiture</h2>
 
-<h2>Réserver une voiture</h2>
+  <label>Choisir une voiture</label>
+  <select id="voiture">
+    <option value="900">Mercedes Benz 2024 — 900 DH/jour</option>
+    <option value="350">Toyota Yaris 2024 — 350 DH/jour</option>
+    <option value="600">BMW Série 3 2024 — 600 DH/jour</option>
+    <option value="250">Dacia Logan 2024 — 250 DH/jour</option>
+    <option value="300">Renault Clio 2024 — 300 DH/jour</option>
+    <option value="500">Hyundai Tucson 2024 — 500 DH/jour</option>
+  </select>
 
-<label>Choisir une voiture</label>
-<select id="voiture">
-  <option value="900">Mercedes Benz 2024 - 900 DH/jour</option>
-  <option value="350">Toyota Yaris 2024 - 350 DH/jour</option>
-  <option value="600">BMW Série 3 2024 - 600 DH/jour</option>
-  <option value="250">Dacia Logan 2024 - 250 DH/jour</option>
-  <option value="300">Renault Clio 2024 - 300 DH/jour</option>
-  <option value="500">Hyundai Tucson 2024 - 500 DH/jour</option>
-</select>
+  <p id="prixJour">Prix : 900 DH / jour</p>
 
-<p id="prixJour">Prix : 900 DH / jour</p>
+  <label>Ville de départ</label>
+  <select id="ville">
+    <option value="">-- Choisir une ville --</option>
+    <option>Casablanca</option>
+    <option>Rabat</option>
+    <option>Marrakech</option>
+    <option>Agadir</option>
+  </select>
 
-<label>Ville de départ</label>
-<select id="ville">
-  <option value="">-- Choisir une ville --</option>
-  <option>Casablanca</option>
-  <option>Rabat</option>
-  <option>Marrakech</option>
-  <option>Agadir</option>
-</select>
+  <label>Numéro de téléphone</label>
+  <input type="tel" id="telephone" placeholder="Ex: 06XXXXXXXX">
 
-<label>Numéro de téléphone</label>
-<input type="tel" id="telephone" placeholder="Ex: 06XXXXXXXX">
+  <label>Date de début</label>
+  <input type="date" id="debut">
 
-<label>Date de début</label>
-<input type="date" id="debut">
+  <label>Date de fin</label>
+  <input type="date" id="fin">
 
-<label>Date de fin</label>
-<input type="date" id="fin">
+  <h3>Prix total : <span id="total">0</span> DH</h3>
 
-<h3>Prix total : <span id="total">0</span> DH</h3>
-
-<button onclick="calculer()">Calculer le prix</button>
-<button onclick="confirmer()">Confirmer la réservation</button>
-
+  <button onclick="calculer()">💰 Calculer le prix</button>
+  <button onclick="confirmer()">✅ Confirmer la réservation</button>
 </div>
 
 <script>
-
-
+// Dates min = aujourd'hui
 let today = new Date().toISOString().split("T")[0];
 document.getElementById("debut").min = today;
 document.getElementById("fin").min = today;
 
+// Mise à jour prix/jour au changement de voiture
 document.getElementById("voiture").addEventListener("change", function(){
   document.getElementById("prixJour").innerText =
     "Prix : " + this.value + " DH / jour";
 });
 
-
 function calculer(){
-
-  let prix = parseInt(document.getElementById("voiture").value);
+  let prix  = parseInt(document.getElementById("voiture").value);
   let debut = document.getElementById("debut").value;
-  let fin = document.getElementById("fin").value;
+  let fin   = document.getElementById("fin").value;
 
   if(!debut || !fin){
     alert("Veuillez remplir les dates !");
     return;
   }
 
-  
   let date1 = new Date(debut);
   let date2 = new Date(fin);
-
-  
   date1.setHours(0,0,0,0);
   date2.setHours(0,0,0,0);
 
@@ -206,21 +365,16 @@ function calculer(){
     return;
   }
 
-
-  let diff = (date2 - date1) / (1000 * 60 * 60 * 24);
-
+  let diff  = (date2 - date1) / (1000 * 60 * 60 * 24);
   let total = diff * prix;
-
   document.getElementById("total").innerText = total;
 }
 
-
 function confirmer(){
-
   let ville = document.getElementById("ville").value;
-  let tel = document.getElementById("telephone").value;
+  let tel   = document.getElementById("telephone").value;
   let debut = document.getElementById("debut").value;
-  let fin = document.getElementById("fin").value;
+  let fin   = document.getElementById("fin").value;
   let total = document.getElementById("total").innerText;
 
   if(ville === "" || tel === "" || debut === "" || fin === ""){
@@ -234,13 +388,12 @@ function confirmer(){
   }
 
   if(total == 0){
-    alert("Veuillez calculer le prix !");
+    alert("Veuillez calculer le prix d'abord !");
     return;
   }
 
-  alert("✅ Votre réservation est enregistrée ! Merci pour votre confience 🥰");
+  alert("✅ Votre réservation est enregistrée ! Merci pour votre confiance 🙏");
 }
-
 </script>
 
 </body>
