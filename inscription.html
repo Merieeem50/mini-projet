@@ -178,6 +178,40 @@
       background: #b8902e;
       box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
     }
+    .divider {
+  text-align: center;
+  color: var(--mid);
+  font-size: 13px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 38%;
+  height: 1px;
+  background: rgba(201, 168, 76, 0.2);
+}
+
+.divider::before { left: 0; }
+.divider::after  { right: 0; }
+
+.links {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.3s ease;
+}
+
+.links a:hover { opacity: 0.75; }
 
     #success-section {
       display: none;
@@ -249,6 +283,11 @@
       </div>
 
       <button onclick="inscrire()">Créer mon compte</button>
+    </div>
+    <div class="divider">ou</div>
+
+    <div class="links">
+      <a href="connexion.html">J'ai déjà un compte → Se connecter</a>
     </div>
 
     <div id="success-section">
