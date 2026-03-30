@@ -244,12 +244,18 @@
 
     <div class="badge"> Disponible</div>
 
-    <button onclick="window.location.href='reservation.html'">
+    <button onclick="reserverCetteVoiture()">
       Réserver maintenant
     </button>
   </div>
 
   <script>
+    function reserverCetteVoiture() {
+ 
+  localStorage.setItem('prixChoisi', voiture.prix);
+  localStorage.setItem('nomChoisi',  voiture.nom);
+  window.location.href = 'reservation.html';
+}
 
     const voiture = JSON.parse(localStorage.getItem('voiture'));
 
