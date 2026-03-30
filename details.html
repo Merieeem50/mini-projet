@@ -23,7 +23,7 @@
       align-items: center;
     }
 
-    /* ── NAVBAR ── */
+   
     .navbar {
       width: calc(100% - 40px);
       display: flex;
@@ -101,7 +101,7 @@
       font-weight: 900;
     }
 
-    /* ── CARD ── */
+   
     .card {
       width: 100%;
       max-width: 600px;
@@ -114,7 +114,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* ✅ Correction : .card:hover */
+    
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 14px 35px rgba(201, 168, 76, 0.3);
@@ -195,7 +195,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* ✅ Correction : .card button:hover */
+   
     .card button:hover {
       background: #b8902e;
       box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
@@ -242,7 +242,7 @@
     <div class="spec">🧳 Coffre : <span id="coffre"></span></div>
     <div class="spec">💪 Puissance : <span id="puissance"></span></div>
 
-    <div class="badge">✅ Disponible</div>
+    <div class="badge"> Disponible</div>
 
     <button onclick="window.location.href='reservation.html'">
       Réserver maintenant
@@ -250,11 +250,11 @@
   </div>
 
   <script>
-    // ✅ Correction : guillemets autour de 'voiture'
+
     const voiture = JSON.parse(localStorage.getItem('voiture'));
 
     if(voiture) {
-      // ✅ Correction : guillemets autour de tous les ids
+     
       document.getElementById('nom').innerText       = voiture.nom;
       document.getElementById('prix').innerText      = voiture.prix + " DH/jour";
       document.getElementById('image').src           = voiture.image;

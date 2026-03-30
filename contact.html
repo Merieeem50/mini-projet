@@ -23,7 +23,7 @@
       align-items: center;
     }
 
-    /* ── NAVBAR ── */
+    
     .navbar {
       width: calc(100% - 40px);
       display: flex;
@@ -100,7 +100,7 @@
       font-weight: 900;
     }
 
-    /* ── CONTACT CONTAINER ── */
+   
     .contact-container {
       width: 100%;
       max-width: 600px;
@@ -176,7 +176,7 @@
       box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
     }
 
-    /* ── INFO CONTACT ── */
+  
     .contact-info {
       margin-top: 30px;
       border-top: 1px solid rgba(201, 168, 76, 0.2);
@@ -230,22 +230,21 @@
   </nav>
 
   <div class="contact-container">
-    <h2>📬 Contactez-nous</h2>
+    <h2> Contactez-nous</h2>
 
     <label>Votre nom</label>
-    <input type="text" id="nom" placeholder="Ex: Mariam El Idrissi" required>
+    <input type="text" id="nom" placeholder="Entrez votre nom" required>
 
     <label>Votre email</label>
-    <input type="email" id="email" placeholder="Ex: mariam@email.com" required>
+    <input type="email" id="email" placeholder="Ex: exemple@email.com" required>
 
     <label>Votre message</label>
     <textarea id="message" rows="5" placeholder="Écrivez votre message ici..."></textarea>
 
-    <button onclick="envoyer()">✉️ Envoyer le message</button>
+    <button onclick="envoyer()">Envoyer le message</button>
 
     <div class="contact-info">
       <p>📍 <span>Adresse :</span> Agadir, Maroc</p>
-      <p>📞 <span>Téléphone :</span> +212 6XX XX XX XX</p>
       <p>📧 <span>Email :</span> contact@siyarago.ma</p>
     </div>
   </div>
@@ -258,25 +257,25 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if(nom === ""){
-        alert("⚠️ Veuillez entrer votre nom !");
+        alert("Veuillez entrer votre nom !");
         return;
       }
       if(email === ""){
-        alert("⚠️ Veuillez entrer votre email !");
+        alert("Veuillez entrer votre email !");
         return;
       }
       if(!emailRegex.test(email)){
-        alert("❌ Email non valide !");
+        alert("Email non valide !");
         return;
       }
       if(message === ""){
-        alert("⚠️ Veuillez entrer votre message !");
+        alert("Veuillez entrer votre message !");
         return;
       }
 
-      alert("✅ Message envoyé avec succès ! Nous vous répondrons très bientôt 🙏");
+      alert("Message envoyé avec succès ! Nous vous répondrons très bientôt ");
 
-      // Reset form
+    
       document.getElementById("nom").value = "";
       document.getElementById("email").value = "";
       document.getElementById("message").value = "";

@@ -19,11 +19,11 @@
       background: var(--primary);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;  /* ✅ FIX principal */
+      flex-direction: column; 
       align-items: center;
     }
 
-    /* ── NAVBAR ── */
+    
     .navbar {
       width: calc(100% - 40px);
       display: flex;
@@ -101,7 +101,7 @@
       font-weight: 900;
     }
 
-    /* ── FORM PAGE ── */
+   
     .page {
       background: var(--dark);
       padding: 40px 35px;
@@ -254,7 +254,7 @@
   </nav>
 
   <div class="page">
-    <h2>✨ Créer un compte</h2>
+    <h2> Créer un compte</h2>
 
     <div id="form-section">
       <div class="form-group">
@@ -306,26 +306,26 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!prenom || !nom || !email || !password || !confirm) {
-        alert("⚠️ Veuillez remplir tous les champs !");
+        alert("Veuillez remplir tous les champs !");
         return;
       }
       if (!emailRegex.test(email)) {
-        alert("❌ Email non valide !");
+        alert("Email non valide !");
         return;
       }
       if (password.length < 6) {
-        alert("⚠️ Le mot de passe doit contenir au moins 6 caractères !");
+        alert("Le mot de passe doit contenir au moins 6 caractères !");
         return;
       }
       if (password !== confirm) {
-        alert("❌ Les mots de passe ne correspondent pas !");
+        alert("Les mots de passe ne correspondent pas !");
         return;
       }
 
       document.getElementById("form-section").style.display = "none";
       document.getElementById("success-section").style.display = "block";
       document.getElementById("success-msg").innerHTML =
-        "🎉 Bienvenue <strong>" + prenom + " " + nom + "</strong> !<br><br>" +
+        "Bienvenue <strong>" + prenom + " " + nom + "</strong> !<br><br>" +
         "<span style='color:var(--mid);font-size:14px;'>Votre compte a été créé avec succès.</span><br><br>" +
         "<a href='index.html' style='color:var(--accent);text-decoration:none;font-size:15px;'>← Retour à l'accueil</a>";
     }

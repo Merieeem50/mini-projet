@@ -23,7 +23,7 @@ body {
   align-items: center;
 }
 
-/* ── NAVBAR ── */
+
 .navbar {
   width: 100%;
   display: flex;
@@ -108,7 +108,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ✅ Fix : boutons navbar isolés du style button global */
+
 .btn-sinscrire {
   background: transparent;
   color: var(--accent);
@@ -156,7 +156,7 @@ body {
   box-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
 }
 
-/* ── FORM CONTAINER ── */
+
 .container {
   width: 100%;
   max-width: 480px;
@@ -177,7 +177,7 @@ h2 {
   letter-spacing: 1px;
 }
 
-/* ✅ Fix h3 */
+
 h3 {
   color: var(--light);
   text-align: center;
@@ -226,7 +226,7 @@ select option {
   color: var(--light);
 }
 
-/* ✅ Fix prixJour */
+
 #prixJour {
   color: var(--accent);
   font-weight: bold;
@@ -235,7 +235,7 @@ select option {
   padding-left: 4px;
 }
 
-/* ✅ Boutons du formulaire uniquement */
+
 .container button {
   width: 100%;
   padding: 14px;
@@ -257,7 +257,7 @@ select option {
   box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
 }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap;
@@ -295,7 +295,7 @@ select option {
 </nav>
 
 <div class="container">
-  <h2>🚗 Réserver une voiture</h2>
+  <h2>Réserver une voiture</h2>
 
   <label>Choisir une voiture</label>
   <select id="voiture">
@@ -329,17 +329,17 @@ select option {
 
   <h3>Prix total : <span id="total">0</span> DH</h3>
 
-  <button onclick="calculer()">💰 Calculer le prix</button>
-  <button onclick="confirmer()">✅ Confirmer la réservation</button>
+  <button onclick="calculer()"> Calculer le prix</button>
+  <button onclick="confirmer()"> Confirmer la réservation</button>
 </div>
 
 <script>
-// Dates min = aujourd'hui
+
 let today = new Date().toISOString().split("T")[0];
 document.getElementById("debut").min = today;
 document.getElementById("fin").min = today;
 
-// Mise à jour prix/jour au changement de voiture
+
 document.getElementById("voiture").addEventListener("change", function(){
   document.getElementById("prixJour").innerText =
     "Prix : " + this.value + " DH / jour";
@@ -366,7 +366,7 @@ function calculer(){
   }
 
   let diff  = (date2 - date1) / (1000 * 60 * 60 * 24);
-  let total = diff * prix;
+  let total = Math.floor(diff * prix);
   document.getElementById("total").innerText = total;
 }
 
@@ -392,7 +392,7 @@ function confirmer(){
     return;
   }
 
-  alert("✅ Votre réservation est enregistrée ! Merci pour votre confiance 🙏");
+  alert(" Votre réservation est enregistrée ! Merci pour votre confiance ");
 }
 </script>
 

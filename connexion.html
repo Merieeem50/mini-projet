@@ -23,7 +23,6 @@
       align-items: center;
     }
 
-    /* ── NAVBAR ── */
     .navbar {
       width: calc(100% - 40px);
       display: flex;
@@ -107,7 +106,7 @@
 
     .nav-buttons button:last-child:hover { background: #b8902e; }
 
-    /* ── LOGIN CARD ── */
+   
     .login-card {
       width: 100%;
       max-width: 400px;
@@ -292,7 +291,7 @@
   </nav>
 
   <div class="login-card">
-    <h2>🔑 Connexion</h2>
+    <h2> Connexion</h2>
     <p class="subtitle">Content de vous revoir !</p>
 
     <div class="form-group">
@@ -334,25 +333,25 @@
       successDiv.style.display = "none";
 
       if (!email || !password) {
-        errorDiv.textContent   = "⚠️ Veuillez remplir tous les champs !";
+        errorDiv.textContent   = " Veuillez remplir tous les champs !";
         errorDiv.style.display = "block";
         return;
       }
 
       if (!emailRegex.test(email)) {
-        errorDiv.textContent   = "❌ Email non valide !";
+        errorDiv.textContent   = " Email non valide !";
         errorDiv.style.display = "block";
         return;
       }
 
       if (password.length < 6) {
-        errorDiv.textContent   = "❌ Mot de passe trop court (min. 6 caractères) !";
+        errorDiv.textContent   = " Mot de passe trop court (min. 6 caractères) !";
         errorDiv.style.display = "block";
         return;
       }
 
       successDiv.innerHTML =
-        "✅ Connexion réussie !<br>" +
+        " Connexion réussie !<br>" +
         "<a href='index.html' style='color:var(--accent);font-size:14px;" +
         "text-decoration:none;display:block;margin-top:10px;'>← Aller à l'accueil</a>";
       successDiv.style.display = "block";
