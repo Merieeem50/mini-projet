@@ -407,3 +407,12 @@ footer {
   font-weight: bold;
   border-top: 2px solid var(--accent);
 }
+@media (max-width: 640px) {
+      .navbar {
+        width: calc(100% - 24px);
+        margin: 12px;
+        padding: 14px 20px;
+        border-radius: 16px;
+        flex-wrap: wrap;
+        position: relative; 
+      }
