@@ -334,25 +334,7 @@ select option {
 </div>
 
 <script>
-  window.onload = function() {
-  let prixChoisi = localStorage.getItem('prixChoisi');
-  let nomChoisi  = localStorage.getItem('nomChoisi');
-
-  if (prixChoisi && nomChoisi) {
-    let select = document.getElementById("voiture");
-
-   
-    for (let i = 0; i < select.options.length; i++) {
-      if (select.options[i].value === prixChoisi) {
-        select.selectedIndex = i;
-        break;
-      }
-    }
-
-    document.getElementById("prixJour").innerText =
-      "Prix : " + prixChoisi + " DH / jour";
-  }
-}
+  
 
 let today = new Date().toISOString().split("T")[0];
 document.getElementById("debut").min = today;
